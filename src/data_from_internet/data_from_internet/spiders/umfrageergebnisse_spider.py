@@ -94,6 +94,8 @@ class QuotesSpider(scrapy.Spider):
         """
 
         cdu_cdu_pos = parties_voted.index('/')
+        if cdu_cdu_pos is None:
+            cdu_cdu_pos = parties_voted.index('.')
         cdu_csu = parties_voted[cdu_cdu_pos - 1:cdu_cdu_pos + 2]
         cdu_csu_string = ''.join(cdu_csu)
         parties_voted_fixed = parties_voted[0:cdu_cdu_pos - 1] \

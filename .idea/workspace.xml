@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="added bat file to automate process" />
+    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,10 +98,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="added bat file to automate process" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="62" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601729301028">
+    <state x="62" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601730650445">
       <screen x="0" y="0" width="1213" height="720" />
     </state>
-    <state x="62" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1213.720@0.0.1213.720" timestamp="1601729301028" />
+    <state x="62" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1213.720@0.0.1213.720" timestamp="1601730650445" />
     <state x="86" y="0" width="828" height="717" key="CommitChangelistDialog2" timestamp="1601727952489">
       <screen x="0" y="0" width="1213" height="720" />
     </state>
