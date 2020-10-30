@@ -15,8 +15,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # import variables
     name = req.params.get('name')
-    sql_name = os.getenv('sql_name')
-    sql_pw = os.getenv('sql_pw')
+    sql_name = os.getenv('sql_db_name')
+    sql_pw = os.getenv('sql_db_pw')
+    # sql_name = os.environ['sql_db_name']
+    # sql_pw = os.environ['sql_db_pw']
 
     # set defaults for azure sql datbse
     server = 'sonntagsfrage-server.database.windows.net'
@@ -26,7 +28,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     driver = '{ODBC Driver 17 for SQL Server}'
 
     # open connection
-    conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+    conn_str = 'DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password
+    logging.info(conn_str)
+    conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
 
     # define spider
