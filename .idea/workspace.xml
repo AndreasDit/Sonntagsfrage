@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/crawl_data_questionaire_results/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/crawl_data_questionaire_results/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/crawl_data_questionaire_results/call.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/crawl_data_questionaire_results/call.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webcrawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/webcrawler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
