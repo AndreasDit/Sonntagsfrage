@@ -11,3 +11,4 @@ azure:
     sql_db_pw: <password>
     server: sonntagsfrage-server.database.windows.net
     database: sonntagsfrage-sql-db
+    driver: '{ODBC Driver 17 for SQL Server}'

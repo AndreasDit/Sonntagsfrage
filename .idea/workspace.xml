@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/configs.yaml.sample" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/forecaster/configs_for_code.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/forecaster/logs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/forecaster/prepare_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/forecaster/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/config/configs.yaml.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/configs_for_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/configs_for_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/prepare_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/prepare_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +66,32 @@
       <option name="presentableId" value="Default" />
       <updated>1602415809003</updated>
     </task>
+    <task id="LOCAL-00001" summary="Logging  done: tested and working.&#10;Started work on data ingestion.">
+      <created>1604228858259</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604228858259</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Logging  done: tested and working.&#10;Started work on data ingestion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Logging  done: tested and working.&#10;Started work on data ingestion." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604229555980">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604229555980" />
+    <state x="528" y="133" key="CommitChangelistDialog2" timestamp="1604228857501">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="528" y="133" key="CommitChangelistDialog2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604228857501" />
+    <state x="520" y="272" key="Vcs.Push.Dialog.v2" timestamp="1604228859921">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="520" y="272" key="Vcs.Push.Dialog.v2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604228859921" />
   </component>
 </project>
