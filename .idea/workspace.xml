@@ -2,17 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/webcrawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/webcrawler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/configs.yaml.sample" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/forecaster/configs_for_code.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/forecaster/logs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/forecaster/prepare_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/forecaster/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="crawl_data" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,6 +37,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\config" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">

@@ -1,0 +1,13 @@
+appName: Sonntagsfrage
+
+logging:
+    file_path: ./log/
+    file_name: logs_<YYYYmmddHMS>.log
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s'
+    log_level: DEBUG
+
+azure:
+    sql_db_name: <username>
+    sql_db_pw: <password>
+    server: sonntagsfrage-server.database.windows.net
+    database: sonntagsfrage-sql-db
