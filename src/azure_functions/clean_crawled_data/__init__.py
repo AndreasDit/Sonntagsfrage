@@ -41,17 +41,17 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     sqlstmt = """insert into sonntagsfrage.results_questionaire_clean
         select  
         Datum
-        ,cast( coalesce( '0', replace(isnull(CDU_CSU  , '0'), '-', '0')) as numeric) CDU_CSU
-        ,cast( coalesce( '0', replace(isnull(SPD      , '0'), '-', '0')) as numeric) SPD          
-        ,cast( coalesce( '0', replace(isnull(GRUENE   , '0'), '-', '0')) as numeric) GRUENE      
-        ,cast( coalesce( '0', replace(isnull(FDP      , '0'), '-', '0')) as numeric) FDP        
-        ,cast( coalesce( '0', replace(isnull(LINKE    , '0'), '-', '0')) as numeric) LINKE        
-        ,cast( coalesce( '0', replace(isnull(PIRATEN  , '0'), '-', '0')) as numeric) PIRATEN      
-        ,cast( coalesce( '0', replace(isnull(AfD      , '0'), '-', '0')) as numeric) AfD       
-        ,cast( coalesce( '0', replace(isnull(Linke_PDS, '0'), '-', '0')) as numeric) Linke_PDS    
-        ,cast( coalesce( '0', replace(isnull(PDS      , '0'), '-', '0')) as numeric) PDS          
-        ,cast( coalesce( '0', replace(isnull(REP_DVU  , '0'), '-', '0')) as numeric) REP_DVU  
-        , cast( coalesce( '0', replace(replace(replace( isnull(Sonstige , '0'), '-', '0'), 'PIR', '0'), 'WASG3', '0')) as numeric) Sonstige
+        ,cast( concat( '0', replace(isnull(CDU_CSU  , '0'), '-', '0')) as numeric) CDU_CSU
+        ,cast( concat( '0', replace(isnull(SPD      , '0'), '-', '0')) as numeric) SPD          
+        ,cast( concat( '0', replace(isnull(GRUENE   , '0'), '-', '0')) as numeric) GRUENE      
+        ,cast( concat( '0', replace(isnull(FDP      , '0'), '-', '0')) as numeric) FDP        
+        ,cast( concat( '0', replace(isnull(LINKE    , '0'), '-', '0')) as numeric) LINKE        
+        ,cast( concat( '0', replace(isnull(PIRATEN  , '0'), '-', '0')) as numeric) PIRATEN      
+        ,cast( concat( '0', replace(isnull(AfD      , '0'), '-', '0')) as numeric) AfD       
+        ,cast( concat( '0', replace(isnull(Linke_PDS, '0'), '-', '0')) as numeric) Linke_PDS    
+        ,cast( concat( '0', replace(isnull(PDS      , '0'), '-', '0')) as numeric) PDS          
+        ,cast( concat( '0', replace(isnull(REP_DVU  , '0'), '-', '0')) as numeric) REP_DVU  
+        ,cast( concat( '0', replace(replace(replace( isnull(Sonstige , '0'), '-', '0'), 'PIR', '0'), 'WASG3', '0')) as numeric) Sonstige
         ,Befragte   
         ,Zeitraum
         ,''
