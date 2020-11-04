@@ -1,9 +1,9 @@
 import yaml
 import pandas as pd
 
-import logs
-import utils
-import configs_for_code as cfg
+import src.forecaster.logs as logs
+import src.forecaster.utils as utils
+import src.forecaster.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
