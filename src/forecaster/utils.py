@@ -2,8 +2,8 @@ import pyodbc
 import yaml
 import pandas as pd
 
-import logs
-import configs_for_code as cfg
+import src.forecaster.logs as logs
+import src.forecaster.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
@@ -45,7 +45,7 @@ def write_df_to_file(df, filename, path=PATH_DATAFRAMES):
         :param filename: Name of the file.
         :param path: Path where the file should be written.
     """
-    logger.info("Start write_df_to_file()")
+    logger.info("Start write_df_to_file() to path " + path + '/' + filename)
 
     df.to_pickle(f"{path}/{filename}.pkl", protocol=4)
 
@@ -58,7 +58,7 @@ def load_df_from_file(filename, path=PATH_DATAFRAMES):
         :param path: Path to the file.
         :return: pandas.Dataframe: Returns a Pandas Dataframe created from the loaded file.
     """
-    logger.info("Start load_df_from_file()")
+    logger.info("Start load_df_from_file() from path " + path + '/' + filename)
 
     df = pd.read_pickle(f"{path}/{filename}.pkl")
 

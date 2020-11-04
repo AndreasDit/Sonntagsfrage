@@ -12,3 +12,6 @@ azure:
     server: sonntagsfrage-server.database.windows.net
     database: sonntagsfrage-sql-db
     driver: '{ODBC Driver 17 for SQL Server}'
+
+model:
+    target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
