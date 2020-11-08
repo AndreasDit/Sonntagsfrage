@@ -17,17 +17,53 @@ def load_data():
     """
     logger.info("Started load_data()")
 
+    df_survey = load_survey_data()
+
+    df_all_data_combined = df_survey
+
+    utils.write_df_to_file(df_all_data_combined, 'load_data_df_all_data_combined')
+    return df_all_data_combined
+
+
+def load_survey_data():
+    """
+        This function the survey data from the Azure SQL DB.
+
+        :return: pandas.DataFrame: Returns dataframe with servey data.
+    """
+    logger.info("Started load_survey_data()")
+
     # open connection to Azure SQL DB
     conn, cursor = utils.connect_to_azure_sql_db()
 
     # extract Data from Azure SQL DB
     sql_stmt = """select * from sonntagsfrage.results_questionaire_clean"""
     df_survey_results = pd.read_sql(sql_stmt, conn)
-    utils.write_df_to_file(df_survey_results, 'load_data_df_survey_results')
 
-    df_all_data_combined = df_survey_results
+    df_survey_results_clean = clean_survey_data(df_survey_results)
 
-    return df_all_data_combined
+    df_survey_results_final = df_survey_results_clean
+    utils.write_df_to_file(df_survey_results_final, 'load_survey_data')
+    return df_survey_results_final
 
 
+def clean_survey_data(df_input):
+    """
+    Cleans the data from the survey. Performs all transformation steps.
 
+    :param df_input: the input dataframe with the servey data from the Azure SQL DB
+    :return: pandas.DataFrame: Returns dataframe with cleaned servey data.
+    """
+    logger.info("Started clean_survey_data()")
+
+    df_input_pre_clean = df_input
+
+    # clean Datum
+    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum'].astype(str)
+    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].str.replace('*', '')
+    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].apply(lambda x: pd.to_datetime(x) if len(x.split('.')) == 3 else None)
+    df_input_pre_clean['Datum_dt'] = pd.to_datetime(df_input_pre_clean['Datum_dt'], format='%d.%b.%Y')
+    df_input_clean_Datum = df_input_pre_clean.dropna(subset=['Datum_dt'])
+
+    df_input_clean = df_input_clean_Datum
+    return df_input_clean

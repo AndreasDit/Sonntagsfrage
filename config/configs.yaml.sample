@@ -15,3 +15,4 @@ azure:
 
 model:
     target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
+    date_col: Datum_dt

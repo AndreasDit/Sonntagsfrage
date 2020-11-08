@@ -26,9 +26,10 @@ def main():
             output
     """
 
-    df_input = prep.load_data()
+    df_all_data = prep.load_data()
 
-    df_features = feat.generate_features(df_input)
+    df_features = feat.generate_features(df_all_data)
+
 
 if __name__ == "__main__":
     main()
