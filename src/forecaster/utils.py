@@ -32,7 +32,6 @@ def connect_to_azure_sql_db():
 
     # open connection
     conn_str = 'DRIVER=' + driver + ';SERVER=' + server + ';PORT=1433;DATABASE=' + database + ';UID=' + username + ';PWD=' + password
-    logger.info('Connection string is as follows: ' + conn_str)
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
 
