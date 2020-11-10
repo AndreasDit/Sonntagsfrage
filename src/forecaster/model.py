@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import sys
 from datetime import timedelta
+from sklearn.tree import DecisionTreeRegressor
 
 sys.path.append(os.getcwd())
 import src.forecaster.logs as logs
@@ -15,49 +16,33 @@ configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
 logger = logs.create_logger(__name__)
 
-DATE_COL = cfg['model']['date_col']
-TARGET_COLS = cfg['model']['target_cols']
+TARGET_COLS = configs['model']['target_cols']
+
 
 def split_df_into_test_train(df_input, train_start_date, test_start_date, test_end_date):
     """
         This function splits a dataframe into test and train sets defined by the given dates.
 
+        :param df_input : The dataframe which gets split in train and test.
         :param train_start_date : The starting date of the train set (inclusive).
         :param test_start_date : The starting date of the test set (inclusive).
         :param test_end_date : The ending date of the test set (not inclusive).
         :return:pandas.DataFrame: Returns two dataframes: the train and test dataframe.
     """
-    logger.debug("Start split_df_on_given_date()")
+    # logger.info("Start split_df_on_given_date()")
 
     train_data = df_input[(df_input.index < test_start_date) & (df_input.index >= train_start_date)].copy()
     test_data = df_input[(df_input.index >= test_start_date) & (df_input.index < test_end_date)].copy()
 
-    return train_data, test_data
+    X_train = train_data.drop(columns=TARGET_COLS, axis=1)  # .select_dtypes(['number'])
+    y_train = train_data[TARGET_COLS]
+    X_test = test_data.drop(columns=TARGET_COLS, axis=1)  # .select_dtypes(['number'])
+    y_test = test_data[TARGET_COLS]
+
+    return train_data, test_data, X_train, y_train, X_test, y_test
 
 
-def set_index_if_needed(df_input):
-    """
-        This function checks if the dataframe has its date column set as a datetime index. If not it sets the
-        column (as defined in the configs) as the datetime index.
-
-        :param df_input: The dataframe which does get checked for datetime index.
-        :return: pandas.DataFrame: Returns either the input dataframe unmodified or returns the given dataframe
-            with its date column set as an index.
-    """
-    logger.debug("Start set_index_if_needed()")
-
-    ts_idx_exists = 0
-    df_tmp = df_input
-
-    if df_tmp.index.dtype != 'datetime64[ns]': ts_idx_exists = 1
-
-    if ts_idx_exists == 0: df_tmp = df_tmp.set_index(DATE_COL)
-
-    df_final = df_tmp
-    return df_final
-
-
-def train_model(df_train, df_test):
+def train_model(X_train, y_train, X_test, y_test):
     """
         This function performs the training of the model.
 
@@ -65,17 +50,15 @@ def train_model(df_train, df_test):
         :param df_test: The dataframe with the test data set.
         :return: model: Returns the trained model which can be used to get predictions.
     """
-    logger.debug("Start train_model()")
+    # logger.info("Start train_model()")
 
-    X_train = df_train.drop(columns=TARGET_COLS, axis=1).select_dtypes(['number'])
-    y_train = df_train[TARGET_COLS]
-    X_test = df_test.drop(columns=TARGET_COLS, axis=1).select_dtypes(['number'])
-    y_test = df_test[TARGET_COLS]
+    model = DecisionTreeRegressor()
+    model.fit(X_train, y_train)
 
-    return
+    return model
 
 
-def get_predictions(df_input):
+def generate_predictions(df_input):
     """
         This function orchestrates the generation of the predictions. Model definition, trainging and
             predicting take place in this function.
@@ -83,20 +66,34 @@ def get_predictions(df_input):
         :param df_input: The dataframe ready for predictions: data is smooth and clean and all features are generated.
         :return: pandas.DataFrame: Returns the dataframe with the predictions.
     """
-    logger.debug("Start get_predictions()")
+    logger.info("Start generate_predictions()")
 
-    df_given = df_input
+    df_given = df_input.copy()
     nb_days_predicted = 1
 
-    df_given = set_index_if_needed(df_given)
-    df_given.index = df_given.index.sort_values()
+    df_given_idx = utils.set_datecol_as_index_if_needed(df_given)
+    all_dates_sorted = df_given_idx.index.unique()
+    df_for_output_idx = df_given_idx.copy()
 
-    all_dates_sorted = df_given.index.unique()
-    first_date = df_given.index.min()
+    first_date = df_given_idx.index.min()
 
     # train model with rolling window
     for date in all_dates_sorted[1:]:
-        end_date_test_set = date + timedelta(days=1)
-        df_train, df_test = split_df_into_test_train(df_given, first_date, date,end_date_test_set)
+        # logger.info("Generate preds for date " + str(date))
+        end_date_test_set = date + timedelta(days=nb_days_predicted)
+        df_train, df_test, X_train, y_train, X_test, y_test = split_df_into_test_train(df_given_idx, first_date, date,
+                                                                                       end_date_test_set)
 
-        model = train_model(df_train, df_test)
+        model = train_model(X_train, y_train, X_test, y_test)
+        preds_test = model.predict(X_test)
+
+        array_pos = 0
+        for party in TARGET_COLS:
+            df_for_output_idx.loc[df_for_output_idx.index == date, party + '_pred'] = preds_test[0][array_pos]
+            array_pos += 1
+
+    # df_for_output = df_for_output.fillna(0)
+
+    df_given_with_preds = df_for_output_idx
+    utils.write_df_to_file(df_given_with_preds, 'generate_predictions_finish')
+    return df_given_with_preds

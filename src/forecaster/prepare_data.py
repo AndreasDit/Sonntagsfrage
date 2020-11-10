@@ -9,6 +9,8 @@ configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
 logger = logs.create_logger(__name__)
 
+FORECAST_DATE = configs['general']['forecast_date']
+
 def load_data():
     """
         This function loads all data from the sources and combines them into one dataframe for further processing.
@@ -36,8 +38,12 @@ def load_survey_data():
     # open connection to Azure SQL DB
     conn, cursor = utils.connect_to_azure_sql_db()
 
-    # extract Data from Azure SQL DB
-    sql_stmt = """select * from sonntagsfrage.results_questionaire_clean"""
+    # extract Data from Azure SQL DB and one dummy line for the day that will be predicted here
+    sql_stmt = """
+        select * from sonntagsfrage.results_questionaire_clean
+        union all
+        select '""" + FORECAST_DATE + """', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '0'
+        """
     df_survey_results = pd.read_sql(sql_stmt, conn)
 
     df_survey_results_clean = clean_survey_data(df_survey_results)
@@ -56,13 +62,13 @@ def clean_survey_data(df_input):
     """
     logger.info("Started clean_survey_data()")
 
-    df_input_pre_clean = df_input
+    df_input_pre_clean = df_input.copy()
 
     # clean Datum
     df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum'].astype(str)
     df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].str.replace('*', '')
     df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].apply(lambda x: pd.to_datetime(x) if len(x.split('.')) == 3 else None)
-    df_input_pre_clean['Datum_dt'] = pd.to_datetime(df_input_pre_clean['Datum_dt'], format='%d.%b.%Y')
+    df_input_pre_clean['Datum_dt'] = pd.to_datetime(df_input_pre_clean['Datum_dt'], format='%d.%m.%Y')
     df_input_clean_Datum = df_input_pre_clean.dropna(subset=['Datum_dt'])
 
     df_input_clean = df_input_clean_Datum

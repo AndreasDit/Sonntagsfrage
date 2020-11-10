@@ -1,5 +1,8 @@
 appName: Sonntagsfrage
 
+general:
+    forecast_date: 19.11.2020
+
 logging:
     file_path: ./log/
     file_name: logs_<YYYYmmddHMS>.log
