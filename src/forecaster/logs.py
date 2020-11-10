@@ -1,10 +1,12 @@
 import logging
 import sys
+import yaml
+import os
 from datetime import datetime
 from logging import FileHandler
-import yaml
 
-import configs_for_code as cfg
+sys.path.append(os.getcwd())
+import src.forecaster.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
