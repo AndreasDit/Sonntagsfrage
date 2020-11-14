@@ -1,12 +1,10 @@
 import yaml
-import pandas as pd
 import os
 import sys
 
 sys.path.append(os.getcwd())
-import src.forecaster.logs as logs
-import src.forecaster.utils as utils
-import src.forecaster.configs_for_code as cfg
+import src.logs as logs
+import src.configs_for_code as cfg
 import src.forecaster.prepare_data as prep
 import src.forecaster.feat_engineering as feat
 import src.forecaster.model as model

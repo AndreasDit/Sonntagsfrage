@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/general_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/google_spreadsheets/load_data_spreadsheet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/siteground_database/load_data_into_siteground.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/config/configs.yaml.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/configs_for_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs_for_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/feat_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/feat_engineering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forecaster/prepare_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/prepare_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/forecaster/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +35,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ijKxVcSKsSQ3rXVDj3TB5WUILd" />
   <component name="ProjectViewState">
@@ -33,11 +45,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/google_spreadsheets" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\accounts" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\google_spreadsheets" />
       <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\config" />
     </key>
   </component>
@@ -127,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605036231369</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Security Measure.">
+      <created>1605036478217</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605036478217</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -136,17 +161,18 @@
     <MESSAGE value="Added working main function.&#10;Started work on model.py!" />
     <MESSAGE value="Wip: Working on the model.py is going on." />
     <MESSAGE value="Predictions working, results get written to Azure SQL DB, new feature added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Predictions working, results get written to Azure SQL DB, new feature added." />
+    <MESSAGE value="Security Measure." />
+    <option name="LAST_COMMIT_MESSAGE" value="Security Measure." />
   </component>
   <component name="WindowStateProjectService">
     <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604229555980">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604229555980" />
-    <state x="527" y="133" key="CommitChangelistDialog2" timestamp="1605036230597">
+    <state x="527" y="133" key="CommitChangelistDialog2" timestamp="1605036476628">
       <screen x="0" y="0" width="1853" height="1080" />
     </state>
-    <state x="527" y="133" key="CommitChangelistDialog2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036230597" />
+    <state x="527" y="133" key="CommitChangelistDialog2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036476628" />
     <state x="528" y="133" key="CommitChangelistDialog2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832336700" />
     <state width="1836" height="287" key="GridCell.Tab.0.bottom" timestamp="1604517512000">
       <screen x="0" y="0" width="1857" height="1080" />
@@ -168,11 +194,15 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="429" y="181" key="SettingsEditor/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517450398" />
-    <state x="519" y="272" key="Vcs.Push.Dialog.v2" timestamp="1605036234209">
+    <state x="519" y="272" key="Vcs.Push.Dialog.v2" timestamp="1605036478981">
       <screen x="0" y="0" width="1853" height="1080" />
     </state>
-    <state x="519" y="272" key="Vcs.Push.Dialog.v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036234209" />
+    <state x="519" y="272" key="Vcs.Push.Dialog.v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036478981" />
     <state x="520" y="272" key="Vcs.Push.Dialog.v2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832338697" />
+    <state x="735" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605170871934">
+      <screen x="0" y="0" width="1853" height="1080" />
+    </state>
+    <state x="735" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605170871934" />
     <state x="670" y="182" key="refactoring.ChangeSignatureDialog" timestamp="1604836450729">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
