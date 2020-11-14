@@ -15,7 +15,19 @@ azure:
     server: sonntagsfrage-server.database.windows.net
     database: sonntagsfrage-sql-db
     driver: '{ODBC Driver 17 for SQL Server}'
+    port: 1433
+
+siteground:
+    sql_db_name: <username>
+    sql_db_pw: <password>
+    server: 35.207.168.47
+    database: cpaneldbq27uf54m7jxaName
+    driver: '{ODBC Driver 17 for SQL Server}'
+    port: 3306
 
 model:
     target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
     date_col: Datum_dt
+
+google:
+    worksheet_name: data

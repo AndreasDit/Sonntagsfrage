@@ -2,15 +2,11 @@ import yaml
 import pandas as pd
 import os
 import sys
-from datetime import timedelta
-from sklearn.tree import DecisionTreeRegressor
 
 sys.path.append(os.getcwd())
-import src.forecaster.logs as logs
+import src.logs as logs
 import src.forecaster.utils as utils
-import src.forecaster.configs_for_code as cfg
-import src.forecaster.prepare_data as prep
-import src.forecaster.feat_engineering as feat
+import src.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)

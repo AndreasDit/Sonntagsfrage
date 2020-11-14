@@ -1,9 +1,10 @@
 import yaml
 import pandas as pd
 
-import src.forecaster.logs as logs
+import src.logs as logs
 import src.forecaster.utils as utils
-import src.forecaster.configs_for_code as cfg
+import src.general_utils as general_utils
+import src.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
@@ -36,7 +37,7 @@ def load_survey_data():
     logger.info("Started load_survey_data()")
 
     # open connection to Azure SQL DB
-    conn, cursor = utils.connect_to_azure_sql_db()
+    conn, cursor = general_utils.connect_to_azure_sql_db()
 
     # extract Data from Azure SQL DB and one dummy line for the day that will be predicted here
     sql_stmt = """

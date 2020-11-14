@@ -2,8 +2,8 @@ import pyodbc
 import yaml
 import pandas as pd
 
-import src.forecaster.logs as logs
-import src.forecaster.configs_for_code as cfg
+import src.logs as logs
+import src.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
@@ -12,30 +12,6 @@ logger = logs.create_logger(__name__)
 FILE_PATH_LOGGING = configs['logging']['file_path']
 PATH_DATAFRAMES = cfg.PATH_DATAFRAMES
 DATE_COL = configs['model']['date_col']
-
-
-def connect_to_azure_sql_db():
-    """
-        This function creates a connection to the underlying Azure SQL DB with the data.
-
-        :return: connection: Returns the connection to the DB.
-        :return: cursor: Returns the cursor which is used to perform database operations on the Azure SQL DB.
-    """
-    logger.info('Start connect_to_azure_sql_db()')
-
-    # set defaults for azure sql datbse
-    server = configs['azure']['server']
-    database = configs['azure']['database']
-    username = configs['azure']['sql_db_name']
-    password = configs['azure']['sql_db_pw']
-    driver = configs['azure']['driver']
-
-    # open connection
-    conn_str = 'DRIVER=' + driver + ';SERVER=' + server + ';PORT=1433;DATABASE=' + database + ';UID=' + username + ';PWD=' + password
-    conn = pyodbc.connect(conn_str)
-    cursor = conn.cursor()
-
-    return conn, cursor
 
 
 def write_df_to_file(df, filename, path=PATH_DATAFRAMES):

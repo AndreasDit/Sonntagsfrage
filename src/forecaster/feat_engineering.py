@@ -2,9 +2,9 @@ import yaml
 import numpy as np
 import pandas as pd
 
-import src.forecaster.logs as logs
+import src.logs as logs
 import src.forecaster.utils as utils
-import src.forecaster.configs_for_code as cfg
+import src.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
