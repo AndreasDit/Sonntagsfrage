@@ -1,12 +1,10 @@
 import logging
 import pyodbc
-import datetime as dt
 import os
 import azure.functions as func
 
-def execute_sql_stmt(sql_stmt, cursor, conn):
-    cursor.execute(sql_stmt)
-    conn.commit()
+from src.general_utils import execute_sql_stmt
+
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function cleans crawled data in the SQL DB.')
@@ -28,7 +26,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # open connection
     conn_str = 'DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password
-    logging.info(conn_str)
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
 
