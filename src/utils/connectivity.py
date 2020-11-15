@@ -3,9 +3,13 @@ import pyodbc
 import yaml
 import mysql
 import mysql.connector
+import gspread
+import os
+import sys
 
-import src.logs as logs
-import src.configs_for_code as cfg
+sys.path.append(os.getcwd())
+import src.utils.logs as logs
+import src.utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
@@ -15,6 +19,7 @@ FILE_PATH_LOGGING = configs['logging']['file_path']
 PATH_DATAFRAMES = cfg.PATH_DATAFRAMES
 DATE_COL = configs['model']['date_col']
 TARGET_COLS = configs['model']['target_cols']
+PATH_GOOGLE_SERVICE_ACCOUNT = cfg.PATH_GOOGLE_SERVICE_ACCOUNT
 
 
 def connect_to_azure_sql_db():
@@ -65,6 +70,21 @@ def connect_to_siteground_sql_db():
     cursor = conn.cursor()
 
     return conn, cursor
+
+
+def connect_to_google_spreadsheets():
+    """
+        This function creates a connection to google spreadsheets using the service account. To access a certain
+            document the file must be explicitely shared with this service account via the mail under
+            client_email in the 'service_account.json'.
+
+        :return: connection: Returns the connection to google spreadsheets.
+    """
+    logger.info('Start connect_to_google_spreadsheets()')
+
+    conn = gspread.service_account(filename=PATH_GOOGLE_SERVICE_ACCOUNT)
+
+    return conn
 
 
 def execute_sql_stmt(sql_stmt, cursor, conn):

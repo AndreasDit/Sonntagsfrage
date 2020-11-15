@@ -1,9 +1,8 @@
-import pyodbc
 import yaml
 import pandas as pd
 
-import src.logs as logs
-import src.configs_for_code as cfg
+import src.utils.logs as logs
+import src.utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)

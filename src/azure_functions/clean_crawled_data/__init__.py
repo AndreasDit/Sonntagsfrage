@@ -3,7 +3,7 @@ import pyodbc
 import os
 import azure.functions as func
 
-from src.general_utils import execute_sql_stmt
+from src.utils.connectivity import execute_sql_stmt
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:

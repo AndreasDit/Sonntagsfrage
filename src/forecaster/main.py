@@ -3,8 +3,8 @@ import os
 import sys
 
 sys.path.append(os.getcwd())
-import src.logs as logs
-import src.configs_for_code as cfg
+import src.utils.logs as logs
+import src.utils.configs_for_code as cfg
 import src.forecaster.prepare_data as prep
 import src.forecaster.feat_engineering as feat
 import src.forecaster.model as model
