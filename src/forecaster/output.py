@@ -1,7 +1,8 @@
 import yaml
-import pandas as pd
 import os
 import sys
+
+from src.general_utils import write_df_to_sql_db
 
 sys.path.append(os.getcwd())
 import src.logs as logs
@@ -28,48 +29,15 @@ def export_results(df_input):
     df_working = df_input.copy()
     df_working = utils.unset_datecol_as_index_if_needed(df_working)
     output_col_names = [DATE_COL] + get_pred_col_names()
+    target_table_name = 'sonntagsfrage.predictions_questionaire'
 
     df_output = df_working[output_col_names]
-
-    # write to Azure SQL DB
-    write_df_to_azure_sql_db(df_output)
-
-
-def write_df_to_azure_sql_db(df_input):
-    """
-        Writes a dataframe pre multiple single row inserts into an Azure SQL DB. If the target table already has an
-            entry for the processed date it gets deleted and overwritten.
-
-        :param df_input: The dataframe with predictions.
-    """
-    logger.info("Start export_results()")
-
-    df_wip = df_input
-    df_string = df_wip.astype(str)
-    all_output_col_names = pd.Series(['Datum'] + TARGET_COLS)
-    header_string = all_output_col_names.str.cat(sep=',')
 
     # open connection
     conn, cursor = utils.connect_to_azure_sql_db()
 
-    for idx in range(1, len(df_string)):
-
-        date = df_string.iloc[idx, 0]
-        row_as_string = df_string.iloc[idx, 1:].str.cat(sep=',')
-
-        # delete existing row
-        sqlstmt = """delete from  sonntagsfrage.predictions_questionaire
-            where Datum = '""" + date + """'"""
-        cursor.execute(sqlstmt)
-        conn.commit()
-
-        # send datarow to azure sql db
-        sqlstmt = """insert into sonntagsfrage.predictions_questionaire( """ + header_string + """ )
-            values (
-            '""" + date + """' , """ + row_as_string + """
-            )"""
-        cursor.execute(sqlstmt)
-        conn.commit()
+    # write to Azure SQL DB
+    write_df_to_sql_db(df_output, conn, cursor, target_table_name)
 
 
 def get_pred_col_names():
