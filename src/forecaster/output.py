@@ -2,12 +2,12 @@ import yaml
 import os
 import sys
 
-from src.general_utils import write_df_to_sql_db
+from src.utils.connectivity import write_df_to_sql_db
 
 sys.path.append(os.getcwd())
-import src.logs as logs
+import src.utils.logs as logs
 import src.forecaster.utils as utils
-import src.configs_for_code as cfg
+import src.utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)

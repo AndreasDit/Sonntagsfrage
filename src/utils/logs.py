@@ -6,7 +6,7 @@ from datetime import datetime
 from logging import FileHandler
 
 sys.path.append(os.getcwd())
-import src.configs_for_code as cfg
+import src.utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)

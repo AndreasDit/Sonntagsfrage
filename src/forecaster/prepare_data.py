@@ -1,10 +1,10 @@
 import yaml
 import pandas as pd
 
-import src.logs as logs
+import src.utils.logs as logs
 import src.forecaster.utils as utils
-import src.general_utils as general_utils
-import src.configs_for_code as cfg
+import src.utils.connectivity as general_utils
+import src.utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
