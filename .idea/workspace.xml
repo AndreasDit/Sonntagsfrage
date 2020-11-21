@@ -2,20 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/webcrawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/webcrawler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/config/configs.yaml.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/google_spreadsheets/load_data_spreadsheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/google_spreadsheets/load_data_spreadsheet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="crawl_data" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ijKxVcSKsSQ3rXVDj3TB5WUILd" />
   <component name="ProjectViewState">
@@ -25,6 +35,51 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ORACLE-SQL&#10;GitIgnore" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/code_snippets" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\utils" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\data_from_internet" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\trash" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\code_snippets" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\google_spreadsheets" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\config" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sonntagsfrage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/forecaster" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/forecaster/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -49,6 +104,142 @@
       <option name="presentableId" value="Default" />
       <updated>1602415809003</updated>
     </task>
+    <task id="LOCAL-00001" summary="Logging  done: tested and working.&#10;Started work on data ingestion.">
+      <created>1604228858259</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604228858259</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Data ingestion from Azure SQL DB done: tested and working.">
+      <created>1604230442305</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604230442305</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added working main function.&#10;Started work on model.py!">
+      <created>1604518381712</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604518381713</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Wip: Working on the model.py is going on.">
+      <created>1604832337690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604832337690</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Predictions working, results get written to Azure SQL DB, new feature added.">
+      <created>1605036231369</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605036231369</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Security Measure.">
+      <created>1605036478217</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605036478217</updated>
+    </task>
+    <task id="LOCAL-00007" summary="started loading data into site. Did some refactoring.">
+      <created>1605383501440</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605383501440</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed plans&gt; back to loading into google document.&#10;This commit saves some code snippets, which might prove useful later down the line.">
+      <created>1605429875150</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605429875150</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Batch inserting into google spreadsheet working!">
+      <created>1605433572331</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605433572332</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Logging  done: tested and working.&#10;Started work on data ingestion." />
+    <MESSAGE value="Data ingestion from Azure SQL DB done: tested and working." />
+    <MESSAGE value="Added working main function.&#10;Started work on model.py!" />
+    <MESSAGE value="Wip: Working on the model.py is going on." />
+    <MESSAGE value="Predictions working, results get written to Azure SQL DB, new feature added." />
+    <MESSAGE value="Security Measure." />
+    <MESSAGE value="started loading data into site. Did some refactoring." />
+    <MESSAGE value="changed plans&gt; back to loading into google document.&#10;This commit saves some code snippets, which might prove useful later down the line." />
+    <MESSAGE value="Batch inserting into google spreadsheet working!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Batch inserting into google spreadsheet working!" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604229555980">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604229555980" />
+    <state x="394" y="250" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1605384604893">
+      <screen x="0" y="0" width="1214" height="720" />
+    </state>
+    <state x="394" y="250" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1214.720@0.0.1214.720" timestamp="1605384604893" />
+    <state x="346" y="0" key="CommitChangelistDialog2" timestamp="1605989921158">
+      <screen x="0" y="0" width="1216" height="720" />
+    </state>
+    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1214.720@0.0.1214.720" timestamp="1605433571647" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1216.720@0.0.1216.720" timestamp="1605989921158" />
+    <state x="527" y="133" key="CommitChangelistDialog2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036476628" />
+    <state x="528" y="133" key="CommitChangelistDialog2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832336700" />
+    <state x="388" y="115" key="FileChooserDialogImpl" timestamp="1605384603318">
+      <screen x="0" y="0" width="1214" height="720" />
+    </state>
+    <state x="388" y="115" key="FileChooserDialogImpl/0.0.1214.720@0.0.1214.720" timestamp="1605384603318" />
+    <state width="1836" height="287" key="GridCell.Tab.0.bottom" timestamp="1604517512000">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1836" height="287" key="GridCell.Tab.0.bottom/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
+    <state width="1836" height="287" key="GridCell.Tab.0.center" timestamp="1604517512000">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1836" height="287" key="GridCell.Tab.0.center/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
+    <state width="1836" height="287" key="GridCell.Tab.0.left" timestamp="1604517512000">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1836" height="287" key="GridCell.Tab.0.left/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
+    <state width="1836" height="287" key="GridCell.Tab.0.right" timestamp="1604517512000">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state width="1836" height="287" key="GridCell.Tab.0.right/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
+    <state x="429" y="181" key="SettingsEditor" timestamp="1604517450398">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="429" y="181" key="SettingsEditor/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517450398" />
+    <state x="340" y="181" key="Vcs.Push.Dialog.v2" timestamp="1605433573883">
+      <screen x="0" y="0" width="1214" height="720" />
+    </state>
+    <state x="340" y="181" key="Vcs.Push.Dialog.v2/0.0.1214.720@0.0.1214.720" timestamp="1605433573883" />
+    <state x="519" y="272" key="Vcs.Push.Dialog.v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036478981" />
+    <state x="520" y="272" key="Vcs.Push.Dialog.v2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832338697" />
+    <state x="735" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605170871934">
+      <screen x="0" y="0" width="1853" height="1080" />
+    </state>
+    <state x="735" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605170871934" />
+    <state x="670" y="182" key="refactoring.ChangeSignatureDialog" timestamp="1604836450729">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="670" y="182" key="refactoring.ChangeSignatureDialog/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604836450729" />
+    <state x="386" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1605436157975">
+      <screen x="0" y="0" width="1214" height="720" />
+    </state>
+    <state x="386" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1214.720@0.0.1214.720" timestamp="1605436157975" />
+    <state x="589" y="235" width="672" height="678" key="search.everywhere.popup/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605027072092" />
   </component>
 </project>
