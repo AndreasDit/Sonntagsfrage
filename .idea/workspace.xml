@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/code_snippets/load_data_into_siteground.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/clean_crawled_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/clean_crawled_data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs_for_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/configs_for_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forecaster/feat_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/feat_engineering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forecaster/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forecaster/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/output.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forecaster/prepare_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/prepare_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forecaster/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forecaster/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/general_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/connectivity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/config/configs.yaml.sample" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/google_spreadsheets/load_data_spreadsheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/google_spreadsheets/load_data_spreadsheet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/siteground_database/load_data_into_siteground.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/siteground_database/load_data_into_siteground.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webcrawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_from_internet/webcrawler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ORACLE-SQL&#10;GitIgnore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/code_snippets" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -171,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605429875150</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Batch inserting into google spreadsheet working!">
+      <created>1605433572331</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605433572332</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -183,7 +179,8 @@
     <MESSAGE value="Security Measure." />
     <MESSAGE value="started loading data into site. Did some refactoring." />
     <MESSAGE value="changed plans&gt; back to loading into google document.&#10;This commit saves some code snippets, which might prove useful later down the line." />
-    <option name="LAST_COMMIT_MESSAGE" value="changed plans&gt; back to loading into google document.&#10;This commit saves some code snippets, which might prove useful later down the line." />
+    <MESSAGE value="Batch inserting into google spreadsheet working!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Batch inserting into google spreadsheet working!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604229555980">
@@ -194,10 +191,11 @@
       <screen x="0" y="0" width="1214" height="720" />
     </state>
     <state x="394" y="250" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1214.720@0.0.1214.720" timestamp="1605384604893" />
-    <state x="345" y="0" key="CommitChangelistDialog2" timestamp="1605429874538">
-      <screen x="0" y="0" width="1214" height="720" />
+    <state x="346" y="0" key="CommitChangelistDialog2" timestamp="1605989921158">
+      <screen x="0" y="0" width="1216" height="720" />
     </state>
-    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1214.720@0.0.1214.720" timestamp="1605429874538" />
+    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1214.720@0.0.1214.720" timestamp="1605433571647" />
+    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1216.720@0.0.1216.720" timestamp="1605989921158" />
     <state x="527" y="133" key="CommitChangelistDialog2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036476628" />
     <state x="528" y="133" key="CommitChangelistDialog2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832336700" />
     <state x="388" y="115" key="FileChooserDialogImpl" timestamp="1605384603318">
@@ -224,10 +222,10 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="429" y="181" key="SettingsEditor/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517450398" />
-    <state x="340" y="181" key="Vcs.Push.Dialog.v2" timestamp="1605383502675">
+    <state x="340" y="181" key="Vcs.Push.Dialog.v2" timestamp="1605433573883">
       <screen x="0" y="0" width="1214" height="720" />
     </state>
-    <state x="340" y="181" key="Vcs.Push.Dialog.v2/0.0.1214.720@0.0.1214.720" timestamp="1605383502675" />
+    <state x="340" y="181" key="Vcs.Push.Dialog.v2/0.0.1214.720@0.0.1214.720" timestamp="1605433573883" />
     <state x="519" y="272" key="Vcs.Push.Dialog.v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036478981" />
     <state x="520" y="272" key="Vcs.Push.Dialog.v2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832338697" />
     <state x="735" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605170871934">
@@ -238,9 +236,10 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="670" y="182" key="refactoring.ChangeSignatureDialog/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604836450729" />
-    <state x="589" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1605027072092">
-      <screen x="0" y="0" width="1853" height="1080" />
+    <state x="386" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1605436157975">
+      <screen x="0" y="0" width="1214" height="720" />
     </state>
+    <state x="386" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1214.720@0.0.1214.720" timestamp="1605436157975" />
     <state x="589" y="235" width="672" height="678" key="search.everywhere.popup/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605027072092" />
   </component>
 </project>

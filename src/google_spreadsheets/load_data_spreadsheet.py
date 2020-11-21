@@ -14,8 +14,10 @@ configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
 logger = logs.create_logger(__name__)
 
-WORKSHEET_NAME = configs['google']['worksheet_name']
-SPREADSHEET_NAME = configs['google']['spreadsheet_name']
+DATA_SPREADSHEET_NAME = configs['google']['data_spreadsheet_name']
+PREDS_SPREADSHEET_NAME = configs['google']['preds_spreadsheet_name']
+DATA_WORKSHEET_NAME = configs['google']['data_worksheet_name']
+PREDS_WORKSHEET_NAME = configs['google']['preds_worksheet_name']
 
 
 def empty_worksheet(worksheet):
@@ -69,17 +71,23 @@ def main():
     conn_azure, cursor_azure = conns.connect_to_azure_sql_db()
     conn_google = conns.connect_to_google_spreadsheets()
 
-    # load worksheet
-    sheet = conn_google.open(SPREADSHEET_NAME)
-    worksheet = sheet.worksheet(WORKSHEET_NAME)
+    # load worksheets
+    sheet_data = conn_google.open(DATA_SPREADSHEET_NAME)
+    sheet_preds = conn_google.open(PREDS_SPREADSHEET_NAME)
+    data_worksheet = sheet_data.worksheet(DATA_WORKSHEET_NAME)
+    preds_worksheet = sheet_preds.worksheet(PREDS_WORKSHEET_NAME)
 
-    # load table from Azure SQL DB
-    sql_stmt = """select * from sonntagsfrage.predictions_questionaire"""
-    df_table = pd.read_sql(sql_stmt, conn_azure)
+    # load tables from Azure SQL DB
+    sql_stmt = """select * from sonntagsfrage.v_predictions_questionaire_pivot"""
+    df_table_preds = pd.read_sql(sql_stmt, conn_azure)
+    sql_stmt = """select * from sonntagsfrage.v_results_questionaire_clean_pivot"""
+    df_table_data = pd.read_sql(sql_stmt, conn_azure)
 
-    empty_worksheet(worksheet)
+    empty_worksheet(data_worksheet)
+    empty_worksheet(preds_worksheet)
 
-    fill_worksheet_from_df(worksheet, df_table)
+    fill_worksheet_from_df(data_worksheet, df_table_data)
+    fill_worksheet_from_df(preds_worksheet, df_table_preds)
 
 
 if __name__ == "__main__":
