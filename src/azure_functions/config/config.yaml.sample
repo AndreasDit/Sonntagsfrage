@@ -1,0 +1,69 @@
+appName: breuni_data_sprint
+
+logging:
+  log_level: DEBUG
+  log_file_path: ./log/
+  log_file_name: log_<YYYYmmddHMS>.log
+  log_format: '%(asctime)s|%(name)s|%(levelname)s|%(funcName)s:%(lineno)d|%(message)s'
+  log_topic_name: prognose2020 #prognose2020 #prognose2020-dev
+
+database:
+  sql_file_name: ./sql/data.sql
+
+data_input:
+  mode_bigquery: gcs #local #bigquery #gcs
+  mode_excel: local
+  bigquery_date_col: full_date
+  einflussfakt_date_col: Datum
+  einflussfakt_date_col_format: '%d.%m.%Y'
+  einflussfakt_file_name: Einflussfaktoren_Prognose
+  markting_budget_file_name: Marketing_Budget_ab_2017
+  aktionen_file_names:
+    - inputs_Aktionsmanagement_digital_2017_OM_v2
+    - inputs_Aktionsmanagement_digital_2018_OM_v2
+    - inputs_Aktionsmanagement_digital_2019_OM_v2
+    - inputs_Aktionsmanagement_digital_2020_OM_v2
+  bigquery_pickle_file_name: bigquery
+  bigquey_table_name: data_input #data_input #data_dev_input
+  project_name: breuninger-playground-adm
+  dataset_name: Prognosemodell_2020
+  bucket_name: prognose2020
+  inputs_directory: inputs
+
+feature_engineering:
+  features_chosen_by: manual #manual #PCA
+  n_components: 54
+  selectkbest: all
+  no_of_days_for_rolling_avg: 14
+  one_hot_features:
+    - ressort
+  countries:
+    - DE
+
+model:
+  train_mode: best
+  target_column: anzahl_positionen
+  train_start_date: 2017-01-01 00:00:00
+  test_start_date: 2020-06-01 00:00:00
+  test_end_date:  2020-08-01 00:00:00
+  pred_offset_mode: dynamic #fixed #dynamic
+  pred_offset_plus: 60
+  features_importance_table: features_importance #dev_features_importance #features_importance
+
+main:
+  model_path: ./models/models.p
+  result_file_path: outputs
+  result_file_name: result_<YYYYmmddHMS>
+  result_bigquery_table: forecast_results #forecast_results #forecast_results_dev
+  feature_bigquery_table: features #features #dev_features
+  feature_prediction_bigquery_table: features_prediction #dev_features_prediction #features_prediction
+  feature_save_mode: bigquery #local #bigquery
+  exec_mode: predict
+  pred_mode: ressort #total #ressort
+  export_columns:
+    - Datum
+    - anzahl_positionen_pred
+
+post_processing:
+  rmse_welt_bigquery_table: rmse_welt #dev_rmse_welt #rmse_welt
+  rmse_kw_welt_bigquery_table: rmse_kw_welt #dev_rmse_kw_welt #rmse_kw_welt
