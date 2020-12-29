@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sonntagsfrage-295521",
+  "private_key_id": "484072c2bc32661d0219e201a1df82770065f457",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC3zzBljtxTO4YB\nKa9vfn8MT+YNOWku9wmXEYeM4MvnFuGdPZjySg6HCQUbMtNlOUjwWbGYWHq7B6be\nTkKcNzknoHWASqhCMF+gJ3vW7g8Pa1n4F6lWbVYAtY64HuUCuMTaa5xkwL/sUcrv\nCBfuZo0Czw3+AQs7ErDj22j4JHwE9RiYS9WbSMP2Pp4jQRRn6r6NAZjOs8siHmFz\nWuXrLxp/EHFT9/vNucdbO0zzCGNX9oBPdOcLjnO+JkXU38OXLP2p+9u+crO1sjoT\nMaGoljOIwylLlRWYvNgbju5A5ZaZoFBGlji2J8mQOKrXhdWnC+WnqMxB7sKnmUJg\nE+nANuh5AgMBAAECgf8X/1eUQe54b2YzgKn+uZC3+yCsf3JWo8q+GUsbOs50jDG+\nRKsiODtaQSWZ2+C2wV5soLuTxYcU6BRfGTaKHO+xK7pXEniHQXvo5WpWrhZwwgZM\nqTyObXJydZjc1GI5TH1cBCceHkrEwWj95gDzCfoJOk95WWQX2Gya++Io1S2lb6aB\nKbxD5tbIKFvkcY2tDadJulbBWP9rlBy5yF1JzUm1VlI3dD8QEObz0dna475vevsX\n6phXY/fN5FOEVOOLYSX4/zVrzW/k+HWNfVV//POsguUxvN/quG3BUMJp5ZcKWMnL\nCFd8oLJrxRTL2UAFUEJ6+wDAHz2XsqIErF/27rECgYEA/TZmcEAEA7fhEkYph6wd\n94ZJpAFoN9Gc2mqRxzH8NBtc6uXDKSwEXm08PqsDJurjvzP2beeqDUnxye5loNFk\ndsBNKGMZEKdnO8uSjlo/Hqa9uzTJDslg/op1JC0zcDeGLto1Ck4bczHxFmTvX2bg\n8AO9HjxSUI0Y1M3MEFlZnkkCgYEAudUyqGqoUdAagc3w9HZ0bodKjPAgYwAmQyFN\naRAhbcbdkYxYWRe1JiKVweBSyKIxkIcquzRXCmnzuUiI/rVONfN35kfFDwpv95p+\nwmRMPyy9Av5UsiAX357qdU+XUFvx7VfVODLeqfa5ZSECmgteU1smX6NnWKV0VRny\nikOcuLECgYBPsBwi/XKF/Qt/JceSJA+2Q3PPgoXa80PK1TkVmFyHxYjDgBWgUnL5\niKUqD8XJLKkKFn9abUruLbRDWZxwNRXJ7ZEawb00qYpqnhF8bVhp/A2/6cfQuH2m\n/coJ3ZPPoBnBivigSp6G7VOzOYa/3m+x+Ws+Jbu+D/mdlzq+dnAmyQKBgQCdUkpS\nngjlSiJGpcxJiUbEk7CfZGJmrae2ySi5uzgxsVu+bmwU8KchI8JYocozpGwFiQi5\n93OAk3YL88ZWq7MMpZNp1nSTaSilG5wYgcSy7vMM57dYHSdY3zZqHflhxJUpc2RE\n8Xvjs8X8QVfshZdTRiVUbgd92oSDzzWvq9Gv4QKBgQC1kEf4NYCBRm7kSQpCL5TM\nTt9lVCL9aaJ+BBmeIWx6GtRKte1VEkqVGDOGG8rGnmGaFt3zPW8s3pc4HUcSqzjh\nwdE9xU8PvRbBtJQ+xgRahGN2vo8RiTd6JuukNjHdgepf8oS/9qNAbf5++Z7Ehg6e\nixbVXVz7x1hfwwV6+bX+Lw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "azure-sql-verbindung@sonntagsfrage-295521.iam.gserviceaccount.com",
+  "client_id": "111407157006574755733",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/azure-sql-verbindung%40sonntagsfrage-295521.iam.gserviceaccount.com"
+}
