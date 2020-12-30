@@ -1,10 +1,11 @@
 {
-    "azureFunctions.deploySubpath": "src\\azure_functions",
+    "azureFunctions.deploySubpath": "src/azure_functions",
     "azureFunctions.scmDoBuildDuringDeployment": true,
     "azureFunctions.projectLanguage": "Python",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "python.pythonPath": ".venv\\Scripts\\python.exe",
+    "python.pythonPath": "/usr/bin/python3",
     "azureFunctions.pythonVenv": ".venv",
-    "azureFunctions.templateFilter": "Core"
+    "azureFunctions.templateFilter": "Core",
+    "azureFunctions.projectSubpath": "src/azure_functions"
 }
