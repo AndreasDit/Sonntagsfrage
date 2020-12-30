@@ -6,7 +6,7 @@ import azure.durable_functions as df
 
 async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
     client = df.DurableOrchestrationClient(starter)
-    instance_id = await client.start_new('Fctn_Orchestrator', client_input = {
+    instance_id = await client.start_new('Fctn_Orchestrator_Pipeline', client_input = {
         "start":"hallo welt"
     })
 

@@ -26,6 +26,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     username = sql_name
     password = sql_pw 
     driver = '{ODBC Driver 17 for SQL Server}'
+    logging.info(sql_pw)
+    logging.info(sql_name)
 
     # open connection
     conn_str = 'DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password
