@@ -14,7 +14,8 @@ import azure.durable_functions as df
 
 
 def orchestrator_function(context: df.DurableOrchestrationContext):
-    result1 = yield context.call_activity('crawl_data_questionaire_results')
-    return [result1]
+    result1 = yield context.call_activity('crawl_data_questionaire_results_orch')
+    result2 = yield context.call_activity('clean_crawled_data_orch')
+    return [result1, result2]
 
 main = df.Orchestrator.create(orchestrator_function)
