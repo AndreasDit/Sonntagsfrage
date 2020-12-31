@@ -92,7 +92,7 @@ def execute_sql_stmt(sql_stmt, cursor, conn):
     conn.commit()
 
 
-def write_df_to_sql_db(df_input, conn, cursor, target):
+def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
     """
         Writes a dataframe pre multiple single row inserts into an Azure SQL DB. If the target table already has an
             entry for the processed date it gets deleted and overwritten.
@@ -101,6 +101,7 @@ def write_df_to_sql_db(df_input, conn, cursor, target):
         :param conn: Connection to the target DB.
         :param cursor: Cursor to the target DB.
         :param target: Name of the target table.
+        :param header: Shall the col names inside the tf be used to insert the data, or shall the data be inserted by position.
     """
     logger.info("Start write_df_to_sql_db() for table " + target)
 
@@ -128,8 +129,11 @@ def write_df_to_sql_db(df_input, conn, cursor, target):
         conn.commit()
 
         # send datarow to azure sql db
-        sqlstmt = """insert into """ + target + """( """ + header_string + """ )
-            values (
+        if header: s
+            qlstmt = """insert into """ + target + """( """ + header_string + """ )"""
+        else: 
+            sqlstmt = """insert into """ + target
+        sqlstmt += """    values (
             '""" + date + """' , """ + row_as_string + """
             )"""
         logger.info(sqlstmt)

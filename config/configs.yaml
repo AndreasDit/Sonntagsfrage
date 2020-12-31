@@ -1,6 +1,7 @@
 appName: Sonntagsfrage
 
 general:
+    forecast_mode: sysdate #dynamic #hard
     forecast_date: 15.11.2020
 
 logging:
