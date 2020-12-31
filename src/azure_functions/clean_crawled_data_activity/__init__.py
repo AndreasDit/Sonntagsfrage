@@ -22,7 +22,7 @@ sys.path.append(os.getcwd())
 from utils.connectivity import execute_sql_stmt
 
 def main(name: str) -> str:
-    logging.info('Python HTTP trigger function cleans crawled data in the SQL DB.')
+    logging.info('Python trigger function cleans crawled data in the SQL DB.')
     # setup()
 
     # import variables

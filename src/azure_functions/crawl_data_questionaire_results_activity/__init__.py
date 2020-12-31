@@ -18,7 +18,7 @@ import azure.functions as func
 
 
 def main(name: str) -> str:
-    logging.info('Python HTTP trigger function processed a request.')
+    logging.info('Python trigger function processed a request.')
     # setup()
 
     # import variables

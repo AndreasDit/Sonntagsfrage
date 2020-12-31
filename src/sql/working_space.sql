@@ -167,7 +167,7 @@ from sonntagsfrage.predictions_questionaire p
 join sonntagsfrage.results_questionaire_clean r on p.Datum = r.Datum
 select * from sonntagsfrage.results_questionaire_clean 
 
-create or alter view [sonntagsfrage].[v_results_questionaire_clean_pivot] as 
+create or alter view [sonntagsfrage].[v_predictions_questionaire_pivot] as 
 select p.Datum, p.CDU_CSU, 'CDU_CSU' as Partei from [sonntagsfrage].[predictions_questionaire] p
 union all select p.Datum, p.SPD, 'SPD' as Partei from [sonntagsfrage].[predictions_questionaire] p
 union all select p.Datum, p.GRUENE, 'GRUENE' as Partei from [sonntagsfrage].[predictions_questionaire] p
