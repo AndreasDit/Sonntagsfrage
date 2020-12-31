@@ -2,12 +2,13 @@ import yaml
 import os
 import sys
 
-from src.utils.connectivity import write_df_to_sql_db
+from utils.connectivity import write_df_to_sql_db
+from utils.connectivity import connect_to_azure_sql_db
 
 sys.path.append(os.getcwd())
-import src.utils.logs as logs
-import src.forecaster.utils as utils
-import src.utils.configs_for_code as cfg
+import utils.logs as logs
+import forecaster.utils as utils
+import utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
@@ -34,10 +35,10 @@ def export_results(df_input):
     df_output = df_working[output_col_names]
 
     # open connection
-    conn, cursor = utils.connect_to_azure_sql_db()
+    conn, cursor = connect_to_azure_sql_db()
 
     # write to Azure SQL DB
-    write_df_to_sql_db(df_output, conn, cursor, target_table_name, header=False)
+    write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
 
 
 def get_pred_col_names():

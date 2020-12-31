@@ -3,10 +3,10 @@ import pandas as pd
 from datetime import datetime as dt
 from datetime import timedelta
 
-import src.utils.logs as logs
-import src.forecaster.utils as utils
-import src.utils.connectivity as general_utils
-import src.utils.configs_for_code as cfg
+import utils.logs as logs
+import forecaster.utils as utils
+import utils.connectivity as general_utils
+import utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
