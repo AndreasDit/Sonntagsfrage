@@ -3,6 +3,13 @@
 # Manually managing azure-functions-worker may cause unexpected issues
 
 azure-functions
+azure-functions-durable>=1.0.0b6
+pandas
+PyYAML 
+gspread
+sklearn
+numpy==1.19.3
+mysql-connector-python
 astroid==2.4.2
 attrs==20.2.0
 Automat==20.2.0

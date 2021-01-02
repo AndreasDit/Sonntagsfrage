@@ -37,7 +37,7 @@ def export_results(df_input):
     conn, cursor = utils.connect_to_azure_sql_db()
 
     # write to Azure SQL DB
-    write_df_to_sql_db(df_output, conn, cursor, target_table_name)
+    write_df_to_sql_db(df_output, conn, cursor, target_table_name, header=False)
 
 
 def get_pred_col_names():

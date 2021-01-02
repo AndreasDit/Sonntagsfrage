@@ -2,9 +2,15 @@ import logging
 import pyodbc
 import os
 import azure.functions as func
+import sys
 
-from src.utils.connectivity import execute_sql_stmt
-
+sys.path.append(os.getcwd())
+# sys.path.insert(0, '..')
+# sys.path.insert(0, '../..')
+# sys.path.insert(0, '..\\..')
+# from src.utils.connectivity import execute_sql_stmt
+# from ...utils.connectivity import execute_sql_stmt
+from utils.connectivity import execute_sql_stmt
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function cleans crawled data in the SQL DB.')
