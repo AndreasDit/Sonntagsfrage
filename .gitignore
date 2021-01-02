@@ -132,3 +132,4 @@ dmypy.json
 .pyre/
 
 .python_packages
+src/azure_functions/accounts/test.json
