@@ -1,0 +1,36 @@
+appName: Sonntagsfrage
+
+general:
+    forecast_mode: sysdate #dynamic #hard
+    forecast_date: 15.11.2020
+
+logging:
+    file_path: ./log/
+    file_name: logs_<YYYYmmddHMS>.log
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s'
+    log_level: DEBUG
+
+azure:
+    sql_db_name: < - >
+    sql_db_pw: < - >
+    server: < - >
+    database: < - >
+    driver: < - >
+    port: < - >
+
+siteground:
+    sql_db_name: < - >
+    sql_db_pw: < - >
+    server: < - >
+    database: < - >
+    port: < - >
+
+model:
+    target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
+    date_col: Datum_dt
+
+google:
+    data_spreadsheet_name: < - >
+    preds_spreadsheet_name: < - >
+    preds_worksheet_name: < - >
+    data_worksheet_name: < - >
