@@ -1,0 +1,36 @@
+appName: Sonntagsfrage
+
+general:
+    forecast_mode: sysdate #dynamic #hard
+    forecast_date: 15.11.2020
+
+logging:
+    file_path: ./log/
+    file_name: logs_<YYYYmmddHMS>.log
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s'
+    log_level: DEBUG
+
+azure:
+    sql_db_name: sonntagspredictor
+    sql_db_pw: das_ist_EiN_sICHe_res_PasSworD_!
+    server: sonntagsfrage-server.database.windows.net
+    database: sonntagsfrage-sql-db
+    driver: '{ODBC Driver 17 for SQL Server}'
+    port: 1433
+
+siteground:
+    sql_db_name: uwxt2zd5qpurr
+    sql_db_pw: bLerhFLz0358HSCQ4n3o
+    server: 35.207.168.47
+    database: dbq27uf54m7jxa
+    port: 3306
+
+model:
+    target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
+    date_col: Datum_dt
+
+google:
+    data_spreadsheet_name: Sonntagsfrage_data
+    preds_spreadsheet_name: Sonntagsfrage_preds
+    preds_worksheet_name: preds
+    data_worksheet_name: data
