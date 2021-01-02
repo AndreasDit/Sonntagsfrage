@@ -5,6 +5,7 @@ __pycache__/
 
 # account data
 sonntagsfrage-295521-484072c2bc32.json
+*.yaml
 
 # C extensions
 *.so
