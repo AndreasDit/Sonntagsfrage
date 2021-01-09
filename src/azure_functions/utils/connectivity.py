@@ -131,6 +131,7 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
                 where Datum = '""" + date + """'"""
         else:
             sqlstmt = """truncate table  """ + target
+        logger.info(sqlstmt)
         cursor.execute(sqlstmt)
         conn.commit()
 
