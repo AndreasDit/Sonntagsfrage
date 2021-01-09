@@ -42,6 +42,25 @@ def export_results(df_input):
     if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
 
 
+def export_metrics(df_input):
+    """
+        This function writes the metrics of the generated predictions to various sources so that the metrics can be
+            consumed py other applications.
+
+        :param df_input: The dataframe with predictions.
+    """
+    logger.info("Start export_results()")
+
+    df_output = df_input.copy()
+    target_table_name = 'sonntagsfrage.metric_results'
+
+    # open connection
+    conn, cursor = connect_to_azure_sql_db()
+
+    # write to Azure SQL DB
+    if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, True)
+
+
 def get_pred_col_names():
     """
         This function generates the name of the the predicted columns from the given target columns, e.g. SPD_pred from SPD.

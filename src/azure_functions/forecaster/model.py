@@ -7,6 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 sys.path.append(os.getcwd())
 import utils.logs as logs
 import forecaster.utilty as utils
+import forecaster.evaluation as eval
 import utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
@@ -55,7 +56,7 @@ def train_model(X_train, y_train, X_test, y_test):
     return model
 
 
-def generate_predictions(df_input):
+def generate_predictions(df_input, estimator):
     """
         This function orchestrates the generation of the predictions. Model definition, trainging and
             predicting take place in this function.
@@ -91,6 +92,12 @@ def generate_predictions(df_input):
 
     # df_for_output = df_for_output.fillna(0)
 
+    df_for_output_idx['estimator'] = estimator
     df_given_with_preds = df_for_output_idx
-    utils.write_df_to_file(df_given_with_preds, 'generate_predictions_finish')
-    return df_given_with_preds
+
+    # get corresponding metrics
+    df_metrics = eval.get_metrics_for_all_parties(df_given_with_preds, estimator)
+
+    utils.write_df_to_file(df_given_with_preds, 'generate_predictions_finish_preds')
+    utils.write_df_to_file(df_metrics, 'generate_predictions_finish_metrics')
+    return df_given_with_preds, df_metrics
