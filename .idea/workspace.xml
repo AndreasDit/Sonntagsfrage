@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/evaluation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/feat_engineering.py" afterDir="false" />
+    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="started implementing metrtics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605989949544</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="started implementing metrtics">
+      <created>1610229980019</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1610229980019</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,6 +246,7 @@
     <MESSAGE value="changed plans&gt; back to loading into google document.&#10;This commit saves some code snippets, which might prove useful later down the line." />
     <MESSAGE value="Batch inserting into google spreadsheet working!" />
     <MESSAGE value="Small stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Small stuff." />
+    <MESSAGE value="started implementing metrtics" />
+    <option name="LAST_COMMIT_MESSAGE" value="started implementing metrtics" />
   </component>
 </project>
