@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="started implementing metrtics">
+    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="started implementing metrtics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610229980019</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="started implementing metrtics">
+      <created>1610230077011</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1610230077011</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,6 +255,7 @@
     <MESSAGE value="Batch inserting into google spreadsheet working!" />
     <MESSAGE value="Small stuff." />
     <MESSAGE value="started implementing metrtics" />
-    <option name="LAST_COMMIT_MESSAGE" value="started implementing metrtics" />
+    <MESSAGE value="started implementing metrtics" />
+    <option name="LAST_COMMIT_MESSAGE" value="started implementing metrtics" />
   </component>
 </project>
