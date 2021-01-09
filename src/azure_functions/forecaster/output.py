@@ -7,7 +7,7 @@ from utils.connectivity import connect_to_azure_sql_db
 
 sys.path.append(os.getcwd())
 import utils.logs as logs
-import forecaster.utils as utils
+import forecaster.utilty as utils
 import utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
@@ -16,6 +16,7 @@ logger = logs.create_logger(__name__)
 
 TARGET_COLS = configs['model']['target_cols']
 DATE_COL = configs['model']['date_col']
+WRITE_TO_AZURE = configs['dev']['write_to_azure']
 
 
 def export_results(df_input):
@@ -38,7 +39,7 @@ def export_results(df_input):
     conn, cursor = connect_to_azure_sql_db()
 
     # write to Azure SQL DB
-    write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
+    if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
 
 
 def get_pred_col_names():

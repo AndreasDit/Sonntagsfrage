@@ -4,7 +4,7 @@ from datetime import datetime as dt
 from datetime import timedelta
 
 import utils.logs as logs
-import forecaster.utils as utils
+import forecaster.utilty as utils
 import utils.connectivity as general_utils
 import utils.configs_for_code as cfg
 

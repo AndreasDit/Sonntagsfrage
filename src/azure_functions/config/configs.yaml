@@ -4,6 +4,9 @@ general:
     forecast_mode: sysdate #dynamic #hard
     forecast_date: 15.11.2020
 
+dev:
+    write_to_azure: True
+
 logging:
     file_path: ./log/
     file_name: logs_<YYYYmmddHMS>.log
