@@ -34,6 +34,7 @@ def main():
     df_with_preds, df_metrics = model.generate_predictions(df_with_features, 'DecisionTreeRegressor')
 
     output.export_results(df_with_preds)
+    output.export_metrics(df_metrics)
 
 
 if __name__ == "__main__":

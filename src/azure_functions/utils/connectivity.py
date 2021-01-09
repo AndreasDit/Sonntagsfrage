@@ -94,7 +94,7 @@ def execute_sql_stmt(sql_stmt, cursor, conn):
     conn.commit()
 
 
-def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
+def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates=True):
     """
         Writes a dataframe pre multiple single row inserts into an Azure SQL DB. If the target table already has an
             entry for the processed date it gets deleted and overwritten.
@@ -125,8 +125,12 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
         row_as_string = df_string.iloc[idx, 1:].str.cat(sep=',')
 
         # delete existing row
-        sqlstmt = """delete from  """ + target + """
-            where Datum = '""" + date + """'"""
+        sqlstmt = ''
+        if delete_dates:
+            sqlstmt = """delete from  """ + target + """
+                where Datum = '""" + date + """'"""
+        else:
+            sqlstmt = """truncate table  """ + target
         cursor.execute(sqlstmt)
         conn.commit()
 
