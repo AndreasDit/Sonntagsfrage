@@ -3,6 +3,8 @@ import os
 import sys
 
 sys.path.append(os.getcwd())
+print(os.getcwd())
+sys.path.append('/Users/andreasditte/Desktop/Private_Projekte/Sonntagsfrage/src/azure_functions/')
 import utils.logs as logs
 import utils.configs_for_code as cfg
 import forecaster.prepare_data as prep

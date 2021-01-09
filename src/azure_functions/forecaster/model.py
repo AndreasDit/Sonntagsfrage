@@ -6,7 +6,7 @@ from sklearn.tree import DecisionTreeRegressor
 
 sys.path.append(os.getcwd())
 import utils.logs as logs
-import forecaster.utils as utils
+import forecaster.utilty as utils
 import utils.configs_for_code as cfg
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')

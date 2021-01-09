@@ -6,6 +6,7 @@ import mysql.connector
 import gspread
 import os
 import sys
+from datetime import datetime as dt
 import logging
 
 sys.path.append(os.getcwd())
@@ -129,13 +130,17 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
         cursor.execute(sqlstmt)
         conn.commit()
 
+        # create timestamp
+        dt_now = dt.now()
+        s_now = dt.strftime(dt_now, '%d.%m.%Y')
+
         # send datarow to azure sql db
         if header: 
-            sqlstmt = """insert into """ + target + """( """ + header_string + """ )"""
+            sqlstmt = """insert into """ + target + """( """ + header_string + """, meta_ts )"""
         else: 
             sqlstmt = """insert into """ + target
         sqlstmt += """    values (
-            '""" + date + """' , """ + row_as_string + """
+            '""" + date + """' , """ + row_as_string + """ , '""" + s_now + """'
             )"""
         logger.info(sqlstmt)
         cursor.execute(sqlstmt)

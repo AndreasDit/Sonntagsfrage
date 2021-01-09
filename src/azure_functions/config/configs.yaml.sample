@@ -1,7 +1,11 @@
 appName: Sonntagsfrage
 
 general:
-    forecast_date: 19.11.2020
+    forecast_mode: sysdate #dynamic #hard
+    forecast_date: 15.11.2020
+
+dev:
+    write_to_azure: False
 
 logging:
     file_path: ./log/
@@ -29,5 +33,7 @@ model:
     date_col: Datum_dt
 
 google:
-    spreadsheet_name: <spreadsheet_name>
-    worksheet_name: <worksheet_name>
+    data_spreadsheet_name: <spreadsheet_name>
+    preds_spreadsheet_name: <spreadsheet_name>
+    preds_worksheet_name: <worksheet_name>
+    data_worksheet_name: <worksheet_name>

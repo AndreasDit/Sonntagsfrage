@@ -3,14 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Sonntagsfrage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Sonntagsfrage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/tasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/.funcignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/.funcignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/clean_crawled_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/clean_crawled_data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_predictions_finish.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_predictions_finish.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/feat_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/feat_engineering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/prepare_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/prepare_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/utilty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,19 +52,18 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ijKxVcSKsSQ3rXVDj3TB5WUILd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ORACLE-SQL&#10;GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/code_snippets" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -72,8 +79,8 @@
       <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\config" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Sonntagsfrage" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,8 +101,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Sonntagsfrage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/azure_functions/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.main (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -112,6 +146,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -196,6 +231,17 @@
     <option name="localTasksCounter" value="11" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Logging  done: tested and working.&#10;Started work on data ingestion." />
     <MESSAGE value="Data ingestion from Azure SQL DB done: tested and working." />
@@ -208,76 +254,5 @@
     <MESSAGE value="Batch inserting into google spreadsheet working!" />
     <MESSAGE value="Small stuff." />
     <option name="LAST_COMMIT_MESSAGE" value="Small stuff." />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604229555980">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="683" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604229555980" />
-    <state x="394" y="250" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1605384604893">
-      <screen x="0" y="0" width="1214" height="720" />
-    </state>
-    <state x="394" y="250" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1214.720@0.0.1214.720" timestamp="1605384604893" />
-    <state x="346" y="0" key="CommitChangelistDialog2" timestamp="1605989948921">
-      <screen x="0" y="0" width="1216" height="720" />
-    </state>
-    <state x="345" y="0" key="CommitChangelistDialog2/0.0.1214.720@0.0.1214.720" timestamp="1605433571647" />
-    <state x="346" y="0" key="CommitChangelistDialog2/0.0.1216.720@0.0.1216.720" timestamp="1605989948921" />
-    <state x="527" y="133" key="CommitChangelistDialog2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036476628" />
-    <state x="528" y="133" key="CommitChangelistDialog2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832336700" />
-    <state x="230" y="53" key="DiffContextDialog" timestamp="1605989932529">
-      <screen x="0" y="0" width="1216" height="720" />
-    </state>
-    <state x="230" y="53" key="DiffContextDialog/0.0.1216.720@0.0.1216.720" timestamp="1605989932529" />
-    <state x="388" y="115" key="FileChooserDialogImpl" timestamp="1605384603318">
-      <screen x="0" y="0" width="1214" height="720" />
-    </state>
-    <state x="388" y="115" key="FileChooserDialogImpl/0.0.1214.720@0.0.1214.720" timestamp="1605384603318" />
-    <state width="1836" height="287" key="GridCell.Tab.0.bottom" timestamp="1604517512000">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state width="1836" height="287" key="GridCell.Tab.0.bottom/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
-    <state width="1836" height="287" key="GridCell.Tab.0.center" timestamp="1604517512000">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state width="1836" height="287" key="GridCell.Tab.0.center/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
-    <state width="1836" height="287" key="GridCell.Tab.0.left" timestamp="1604517512000">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state width="1836" height="287" key="GridCell.Tab.0.left/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
-    <state width="1836" height="287" key="GridCell.Tab.0.right" timestamp="1604517512000">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state width="1836" height="287" key="GridCell.Tab.0.right/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517512000" />
-    <state x="330" y="6" key="SettingsEditor" timestamp="1606143080850">
-      <screen x="0" y="0" width="1856" height="1080" />
-    </state>
-    <state x="330" y="6" key="SettingsEditor/0.1080.1237.720/0.0.1856.1080@0.0.1856.1080" timestamp="1606143080850" />
-    <state x="429" y="181" key="SettingsEditor/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604517450398" />
-    <state x="341" y="181" key="Vcs.Push.Dialog.v2" timestamp="1605989951106">
-      <screen x="0" y="0" width="1216" height="720" />
-    </state>
-    <state x="340" y="181" key="Vcs.Push.Dialog.v2/0.0.1214.720@0.0.1214.720" timestamp="1605433573883" />
-    <state x="341" y="181" key="Vcs.Push.Dialog.v2/0.0.1216.720@0.0.1216.720" timestamp="1605989951106" />
-    <state x="519" y="272" key="Vcs.Push.Dialog.v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605036478981" />
-    <state x="520" y="272" key="Vcs.Push.Dialog.v2/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604832338697" />
-    <state x="482" y="304" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605990146962">
-      <screen x="0" y="0" width="1216" height="720" />
-    </state>
-    <state x="482" y="304" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1216.720@0.0.1216.720" timestamp="1605990146962" />
-    <state x="735" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605170871934" />
-    <state x="325" y="73" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605990132482">
-      <screen x="0" y="0" width="1216" height="720" />
-    </state>
-    <state x="325" y="73" key="git4idea.branch.GitSmartOperationDialog/0.0.1216.720@0.0.1216.720" timestamp="1605990132482" />
-    <state x="670" y="182" key="refactoring.ChangeSignatureDialog" timestamp="1604836450729">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="670" y="182" key="refactoring.ChangeSignatureDialog/0.1080.1238.720/0.0.1857.1080@0.0.1857.1080" timestamp="1604836450729" />
-    <state x="386" y="157" width="672" height="452" key="search.everywhere.popup" timestamp="1605436157975">
-      <screen x="0" y="0" width="1214" height="720" />
-    </state>
-    <state x="386" y="157" width="672" height="452" key="search.everywhere.popup/0.0.1214.720@0.0.1214.720" timestamp="1605436157975" />
-    <state x="589" y="235" width="672" height="678" key="search.everywhere.popup/0.1080.1235.720/0.0.1853.1080@0.0.1853.1080" timestamp="1605027072092" />
   </component>
 </project>
