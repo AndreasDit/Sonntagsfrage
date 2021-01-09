@@ -2,23 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Sonntagsfrage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Sonntagsfrage.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/feat_engineering.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_predictions_finish.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_predictions_finish.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/feat_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/feat_engineering.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/prepare_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/prepare_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/utilty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,6 +233,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Logging  done: tested and working.&#10;Started work on data ingestion." />
