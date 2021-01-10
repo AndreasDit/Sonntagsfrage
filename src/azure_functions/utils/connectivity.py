@@ -6,6 +6,7 @@ import mysql.connector
 import gspread
 import os
 import sys
+from datetime import datetime as dt
 import logging
 
 sys.path.append(os.getcwd())
@@ -93,7 +94,7 @@ def execute_sql_stmt(sql_stmt, cursor, conn):
     conn.commit()
 
 
-def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
+def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates=True):
     """
         Writes a dataframe pre multiple single row inserts into an Azure SQL DB. If the target table already has an
             entry for the processed date it gets deleted and overwritten.
@@ -113,10 +114,13 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
     # all_output_col_names = pd.Series(['Datum'] + TARGET_COLS)
     header_string = all_output_col_names.str.cat(sep=',')
 
-    cols = ['Befragte', 'Zeitraum', 'meta_insert_ts']
-    for col in cols:
-        if col in df_string.columns.values:
-            df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
+    # cols = ['Befragte', 'Zeitraum', 'meta_insert_ts']
+    # for col in cols:
+    #     if col in df_string.columns.values:
+    #         df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
+
+    for col in df_string.columns.values:
+        df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
 
     for idx in range(1, len(df_string)):
 
@@ -124,18 +128,27 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True):
         row_as_string = df_string.iloc[idx, 1:].str.cat(sep=',')
 
         # delete existing row
-        sqlstmt = """delete from  """ + target + """
-            where Datum = '""" + date + """'"""
+        sqlstmt = ''
+        if delete_dates:
+            sqlstmt = """delete from  """ + target + """
+                where Datum = """ + date + """ """
+        else:
+            sqlstmt = """truncate table  """ + target
+        logger.info(sqlstmt)
         cursor.execute(sqlstmt)
         conn.commit()
 
+        # create timestamp
+        dt_now = dt.now()
+        s_now = dt.strftime(dt_now, '%d.%m.%Y')
+
         # send datarow to azure sql db
         if header: 
-            sqlstmt = """insert into """ + target + """( """ + header_string + """ )"""
+            sqlstmt = """insert into """ + target + """( """ + header_string + """, meta_ts )"""
         else: 
             sqlstmt = """insert into """ + target
         sqlstmt += """    values (
-            '""" + date + """' , """ + row_as_string + """
+            """ + date + """ , """ + row_as_string + """ , '""" + s_now + """'
             )"""
         logger.info(sqlstmt)
         cursor.execute(sqlstmt)
