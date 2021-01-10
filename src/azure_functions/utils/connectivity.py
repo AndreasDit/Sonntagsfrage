@@ -114,10 +114,13 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
     # all_output_col_names = pd.Series(['Datum'] + TARGET_COLS)
     header_string = all_output_col_names.str.cat(sep=',')
 
-    cols = ['Befragte', 'Zeitraum', 'meta_insert_ts']
-    for col in cols:
-        if col in df_string.columns.values:
-            df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
+    # cols = ['Befragte', 'Zeitraum', 'meta_insert_ts']
+    # for col in cols:
+    #     if col in df_string.columns.values:
+    #         df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
+
+    for col in df_string.columns.values:
+        df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
 
     for idx in range(1, len(df_string)):
 
@@ -128,7 +131,7 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
         sqlstmt = ''
         if delete_dates:
             sqlstmt = """delete from  """ + target + """
-                where Datum = '""" + date + """'"""
+                where Datum = """ + date + """ """
         else:
             sqlstmt = """truncate table  """ + target
         logger.info(sqlstmt)
@@ -145,7 +148,7 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
         else: 
             sqlstmt = """insert into """ + target
         sqlstmt += """    values (
-            '""" + date + """' , """ + row_as_string + """ , '""" + s_now + """'
+            """ + date + """ , """ + row_as_string + """ , '""" + s_now + """'
             )"""
         logger.info(sqlstmt)
         cursor.execute(sqlstmt)
