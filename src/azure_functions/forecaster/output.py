@@ -58,7 +58,7 @@ def export_metrics(df_input):
     conn, cursor = connect_to_azure_sql_db()
 
     # write to Azure SQL DB
-    if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, True)
+    if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, header=True, delete_dates=False)
 
 
 def get_pred_col_names():

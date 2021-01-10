@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="Fixing bugs">
+    <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/output.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,8 +109,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.main (1)" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
