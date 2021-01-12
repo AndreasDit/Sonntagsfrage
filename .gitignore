@@ -138,3 +138,5 @@ dmypy.json
 .python_packages
 src/azure_functions/accounts/test.json
 delete_files.sh
+src/azure_functions/config/configs.yaml
+*.yaml
