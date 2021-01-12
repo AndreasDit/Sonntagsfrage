@@ -107,6 +107,8 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
     """
     logger.info("Start write_df_to_sql_db() for table " + target)
 
+    pd.options.display.float_format = '{:.5f}'.format
+
     df_wip = df_input
     df_string = df_wip.astype(str)
     all_output_col_names = pd.Series(df_string.columns.values)

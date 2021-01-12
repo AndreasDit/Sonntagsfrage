@@ -31,7 +31,7 @@ def main():
 
     df_with_features = feat.generate_features(df_all_data)
 
-    df_with_preds, df_metrics = model.generate_predictions(df_with_features, 'DecisionTreeRegressor')
+    df_with_preds, df_metrics = model.combined_restults_from_all_algorithms(df_with_features)
 
     output.export_results(df_with_preds)
     output.export_metrics(df_metrics)
