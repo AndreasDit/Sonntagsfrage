@@ -21,7 +21,7 @@ DATE_COL = configs['model']['date_col']
 WRITE_TO_AZURE = configs['dev']['write_to_azure']
 
 
-def calc_metrics(y_true, y_pred, party, estimator):
+def calc_metrics(y_true, y_pred):
     """
         This Function calculates all relevant metrics for model evaluation.
 
@@ -38,7 +38,10 @@ def calc_metrics(y_true, y_pred, party, estimator):
     r2 = met.r2_score(y_true, y_pred)
 
     # combine results into dataframe
-    metrics_series = [mae, mse, rmse, mape, r2, party, estimator]
+    metrics_series = [mae, mse, rmse, mape, r2]
+
+    # clean small values, so SQL can parse str to numeric
+    metrics_series = [round(num, 4) for num in metrics_series]
 
     return metrics_series
 
@@ -51,7 +54,9 @@ def get_metrics_for_all_parties(df_input, estimator):
     for party in TARGET_COLS:
         y_true_party = df_with_preds.dropna()[party]
         y_pred_party = df_with_preds.dropna()[party+'_pred']
-        metrics_series = calc_metrics(y_true_party,y_pred_party,party,estimator)
+        metrics_series = calc_metrics(y_true_party,y_pred_party)
+        metrics_series.append(party)
+        metrics_series.append(estimator)
         metrics_array.append(metrics_series)
 
     metrics_colnames = ['mae', 'mse', 'rmse', 'mape', 'r2', 'party', 'estimator']
