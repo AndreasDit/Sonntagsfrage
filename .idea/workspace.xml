@@ -4,16 +4,6 @@
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="Added metrics working.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/df_debug.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_features_all_features.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/generate_predictions_finish.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_all_data_combined.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_data_df_survey_results.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/dataframes/load_survey_data.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/connectivity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
