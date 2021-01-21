@@ -34,6 +34,7 @@ model:
     date_col: Datum_dt
     list_with_algos:
         - DecisionTreeRegressor
+        - XGBRegressor
         - SGDRegressor
         - GradientBoostingRegressor
 

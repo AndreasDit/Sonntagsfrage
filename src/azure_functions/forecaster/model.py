@@ -7,6 +7,7 @@ from sklearn.linear_model import SGDRegressor
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.multioutput import MultiOutputRegressor
 import pandas as pd
+from xgboost.sklearn import XGBRegressor
 
 sys.path.append(os.getcwd())
 import utils.logs as logs
@@ -64,6 +65,16 @@ def train_model(X_train, y_train, X_test, y_test, estimator):
         model.fit(X_train, y_train)
     if estimator == 'GradientBoostingRegressor':
         model = MultiOutputRegressor(GradientBoostingRegressor())
+        model.fit(X_train, y_train)
+    if estimator == 'XGBRegressor':
+        best_params = {'colsample_bytree': 0.5, 'gamma': 0.0, 'learning_rate': 0.1, 'max_depth': 5,
+                     'min_child_weight': 5, 'n_estimators': 50, 'nthread': -1, 
+                    #  'num_boost_round': 45,
+                     'objective': 'reg:squarederror'}
+        model_xgb = XGBRegressor(n_jobs=-1)
+        model_xgb.set_params(**best_params)
+
+        model = MultiOutputRegressor(model_xgb)
         model.fit(X_train, y_train)
 
     return model

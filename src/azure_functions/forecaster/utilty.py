@@ -23,7 +23,10 @@ def write_df_to_file(df, filename, path=PATH_DATAFRAMES):
     """
     logger.info("Start write_df_to_file() to path " + path + '/' + filename)
 
-    df.to_pickle(f"{path}/{filename}.pkl", protocol=4)
+    # Azure has read only file system, hence for deployment this has to be set to true
+    RUN_ON_AZURE = configs['general']['run_on_azure']
+    if RUN_ON_AZURE == False:
+        df.to_pickle(f"{path}/{filename}.pkl", protocol=4)
 
     logger.info("Writing was successful.")
 

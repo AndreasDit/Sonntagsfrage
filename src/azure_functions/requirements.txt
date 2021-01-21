@@ -8,6 +8,7 @@ pandas
 PyYAML 
 gspread
 sklearn
+xgboost
 numpy==1.19.3
 mysql-connector-python
 astroid==2.4.2
