@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="Added metrics working.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/Untitled.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/DurableFunctionsHttpStart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/DurableFunctionsHttpStart/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/utilty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/utilty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/logs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

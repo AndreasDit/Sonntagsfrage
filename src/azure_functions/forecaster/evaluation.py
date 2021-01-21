@@ -38,7 +38,9 @@ def calc_metrics(y_true, y_pred):
     r2 = met.r2_score(y_true, y_pred)
 
     # combine results into dataframe
-    metrics_series = [mae, mse, rmse, mape, r2]
+    metrics_series = [mae, mse, rmse
+        # , mape
+        , r2]
 
     # clean small values, so SQL can parse str to numeric
     metrics_series = [round(num, 4) for num in metrics_series]
@@ -59,7 +61,9 @@ def get_metrics_for_all_parties(df_input, estimator):
         metrics_series.append(estimator)
         metrics_array.append(metrics_series)
 
-    metrics_colnames = ['mae', 'mse', 'rmse', 'mape', 'r2', 'party', 'estimator']
+    metrics_colnames = ['mae', 'mse', 'rmse'
+        # , 'mape'
+        , 'r2', 'party', 'estimator']
     df_metrics = pd.DataFrame(metrics_array, columns=metrics_colnames)
 
     return df_metrics

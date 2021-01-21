@@ -13,7 +13,6 @@ configs = yaml.load(configs_file, Loader=yaml.FullLoader)
 
 FILE_PATH_LOGGING = configs['logging']['file_path']
 FILE_NAME_LOGGING = configs['logging']['file_name']
-RUN_ON_AZURE = configs['general']['run_on_azure']
 FORMATTING = logging.Formatter(configs['logging']['format'])
 LOG_LEVEL = configs['logging']['log_level']
 
@@ -54,6 +53,7 @@ def create_logger(logger_name):
         logger.setLevel(logging.CRITICAL)
 
     # Azure has read only file system, hence for deployment this has to be set to true
+    RUN_ON_AZURE = configs['general']['run_on_azure']
     if RUN_ON_AZURE == False:
         logger.addHandler(create_file_handler())
 
