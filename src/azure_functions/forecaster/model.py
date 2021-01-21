@@ -124,8 +124,6 @@ def generate_predictions(df_input, estimator):
     # get corresponding metrics
     df_metrics = eval.get_metrics_for_all_parties(df_given_with_preds, estimator)
 
-    utils.write_df_to_file(df_given_with_preds, 'generate_predictions_finish_preds')
-    utils.write_df_to_file(df_metrics, 'generate_predictions_finish_metrics')
     return df_given_with_preds, df_metrics
 
 
@@ -144,6 +142,8 @@ def combined_restults_from_all_algorithms(df_with_features):
         frames = [df_metrics, df_metrics_tmp]
         df_metrics = pd.concat(frames)
 
+    utils.write_df_to_file(df_with_preds, 'generate_predictions_finish_preds')
+    utils.write_df_to_file(df_metrics, 'generate_predictions_finish_metrics')
     return df_with_preds, df_metrics
 
 
