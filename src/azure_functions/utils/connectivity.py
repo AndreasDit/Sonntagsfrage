@@ -107,7 +107,9 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
     """
     logger.info("Start write_df_to_sql_db() for table " + target)
 
-    df_wip = df_input
+    pd.options.display.float_format = '{:.5f}'.format
+
+    df_wip = df_input.copy()
     df_string = df_wip.astype(str)
     all_output_col_names = pd.Series(df_string.columns.values)
     logger.info(all_output_col_names)
@@ -122,6 +124,13 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
     for col in df_string.columns.values:
         df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
 
+    if delete_dates is False:
+        sqlstmt = """truncate table  """ + target
+        logger.info(sqlstmt)
+        cursor.execute(sqlstmt)
+        conn.commit()
+
+
     for idx in range(1, len(df_string)):
 
         date = df_string.iloc[idx, 0]
@@ -132,15 +141,13 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
         if delete_dates:
             sqlstmt = """delete from  """ + target + """
                 where Datum = """ + date + """ """
-        else:
-            sqlstmt = """truncate table  """ + target
-        logger.info(sqlstmt)
-        cursor.execute(sqlstmt)
-        conn.commit()
+            logger.info(sqlstmt)
+            cursor.execute(sqlstmt)
+            conn.commit()
 
         # create timestamp
         dt_now = dt.now()
-        s_now = dt.strftime(dt_now, '%d.%m.%Y')
+        s_now = dt.strftime(dt_now, '%d.%m.%Y %H:%M:%S')
 
         # send datarow to azure sql db
         if header: 

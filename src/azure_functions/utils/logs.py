@@ -52,7 +52,10 @@ def create_logger(logger_name):
     elif LOG_LEVEL == 'CRITICAL':
         logger.setLevel(logging.CRITICAL)
 
-    logger.addHandler(create_file_handler())
+    # Azure has read only file system, hence for deployment this has to be set to true
+    RUN_ON_AZURE = configs['general']['run_on_azure']
+    if RUN_ON_AZURE == False:
+        logger.addHandler(create_file_handler())
 
     logger.propagate = False
 

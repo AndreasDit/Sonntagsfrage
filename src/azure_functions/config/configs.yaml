@@ -3,6 +3,7 @@ appName: Sonntagsfrage
 general:
     forecast_mode: sysdate #dynamic #hard
     forecast_date: 15.11.2020
+    run_on_azure: False
 
 dev:
     write_to_azure: True
@@ -31,6 +32,11 @@ siteground:
 model:
     target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
     date_col: Datum_dt
+    list_with_algos:
+        - DecisionTreeRegressor
+        - XGBRegressor
+        - SGDRegressor
+        - GradientBoostingRegressor
 
 google:
     data_spreadsheet_name: Sonntagsfrage_data

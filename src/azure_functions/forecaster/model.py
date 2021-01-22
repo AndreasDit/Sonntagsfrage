@@ -3,6 +3,11 @@ import os
 import sys
 from datetime import timedelta
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import SGDRegressor
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.multioutput import MultiOutputRegressor
+import pandas as pd
+from xgboost.sklearn import XGBRegressor
 
 sys.path.append(os.getcwd())
 import utils.logs as logs
@@ -15,6 +20,7 @@ configs = yaml.load(configs_file, Loader=yaml.FullLoader)
 logger = logs.create_logger(__name__)
 
 TARGET_COLS = configs['model']['target_cols']
+LIST_WITH_ALGOS = configs['model']['list_with_algos']
 
 
 def split_df_into_test_train(df_input, train_start_date, test_start_date, test_end_date):
@@ -40,7 +46,7 @@ def split_df_into_test_train(df_input, train_start_date, test_start_date, test_e
     return train_data, test_data, X_train, y_train, X_test, y_test
 
 
-def train_model(X_train, y_train, X_test, y_test):
+def train_model(X_train, y_train, X_test, y_test, estimator):
     """
         This function performs the training of the model.
 
@@ -48,10 +54,28 @@ def train_model(X_train, y_train, X_test, y_test):
         :param df_test: The dataframe with the test data set.
         :return: model: Returns the trained model which can be used to get predictions.
     """
-    # logger.info("Start train_model()")
+    logger.info("Start train_model()")
 
-    model = DecisionTreeRegressor()
-    model.fit(X_train, y_train)
+    model = None
+    if estimator == 'DecisionTreeRegressor':
+        model = DecisionTreeRegressor()
+        model.fit(X_train, y_train)
+    if estimator == 'SGDRegressor':
+        model = MultiOutputRegressor(SGDRegressor())
+        model.fit(X_train, y_train)
+    if estimator == 'GradientBoostingRegressor':
+        model = MultiOutputRegressor(GradientBoostingRegressor())
+        model.fit(X_train, y_train)
+    if estimator == 'XGBRegressor':
+        best_params = {'colsample_bytree': 0.5, 'gamma': 0.0, 'learning_rate': 0.1, 'max_depth': 5,
+                     'min_child_weight': 5, 'n_estimators': 50, 'nthread': -1, 
+                    #  'num_boost_round': 45,
+                     'objective': 'reg:squarederror'}
+        model_xgb = XGBRegressor(n_jobs=-1)
+        model_xgb.set_params(**best_params)
+
+        model = MultiOutputRegressor(model_xgb)
+        model.fit(X_train, y_train)
 
     return model
 
@@ -82,15 +106,17 @@ def generate_predictions(df_input, estimator):
         df_train, df_test, X_train, y_train, X_test, y_test = split_df_into_test_train(df_given_idx, first_date, date,
                                                                                        end_date_test_set)
 
-        model = train_model(X_train, y_train, X_test, y_test)
+        model = train_model(X_train, y_train, X_test, y_test, estimator)
         preds_test = model.predict(X_test)
+        preds_test = preds_test.round(0)
+        # preds_test = [round(num, 0) for num in preds_test]
 
         array_pos = 0
         for party in TARGET_COLS:
             df_for_output_idx.loc[df_for_output_idx.index == date, party + '_pred'] = preds_test[0][array_pos]
             array_pos += 1
 
-    # df_for_output = df_for_output.fillna(0)
+    df_for_output_idx = df_for_output_idx.fillna(0)
 
     df_for_output_idx['estimator'] = estimator
     df_given_with_preds = df_for_output_idx
@@ -98,6 +124,27 @@ def generate_predictions(df_input, estimator):
     # get corresponding metrics
     df_metrics = eval.get_metrics_for_all_parties(df_given_with_preds, estimator)
 
-    utils.write_df_to_file(df_given_with_preds, 'generate_predictions_finish_preds')
-    utils.write_df_to_file(df_metrics, 'generate_predictions_finish_metrics')
     return df_given_with_preds, df_metrics
+
+
+def combined_restults_from_all_algorithms(df_with_features):
+
+    init_algo = LIST_WITH_ALGOS[0]
+    df_with_preds, df_metrics = generate_predictions(df_with_features, init_algo)
+
+    for idx in range(1, len(LIST_WITH_ALGOS)):
+        current_algo = LIST_WITH_ALGOS[idx]
+        df_with_preds_tmp, df_metrics_tmp = generate_predictions(df_with_features, current_algo)
+
+        frames = [df_with_preds, df_with_preds_tmp]
+        df_with_preds = pd.concat(frames)
+
+        frames = [df_metrics, df_metrics_tmp]
+        df_metrics = pd.concat(frames)
+
+    utils.write_df_to_file(df_with_preds, 'generate_predictions_finish_preds')
+    utils.write_df_to_file(df_metrics, 'generate_predictions_finish_metrics')
+    return df_with_preds, df_metrics
+
+
+

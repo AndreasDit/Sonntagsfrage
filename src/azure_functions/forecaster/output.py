@@ -30,7 +30,7 @@ def export_results(df_input):
 
     df_working = df_input.copy()
     df_working = utils.unset_datecol_as_index_if_needed(df_working)
-    output_col_names = [DATE_COL] + get_pred_col_names()
+    output_col_names = [DATE_COL] + get_pred_col_names() + ['estimator']
     target_table_name = 'sonntagsfrage.predictions_questionaire'
 
     df_output = df_working[output_col_names]
@@ -39,7 +39,8 @@ def export_results(df_input):
     conn, cursor = connect_to_azure_sql_db()
 
     # write to Azure SQL DB
-    if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
+    if WRITE_TO_AZURE: 
+        write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
 
 
 def export_metrics(df_input):
@@ -58,7 +59,8 @@ def export_metrics(df_input):
     conn, cursor = connect_to_azure_sql_db()
 
     # write to Azure SQL DB
-    if WRITE_TO_AZURE: write_df_to_sql_db(df_output, conn, cursor, target_table_name, header=True, delete_dates=False)
+    if WRITE_TO_AZURE: 
+        write_df_to_sql_db(df_output, conn, cursor, target_table_name, header=True, delete_dates=False)
 
 
 def get_pred_col_names():
