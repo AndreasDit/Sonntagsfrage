@@ -1,0 +1,2 @@
+get http://localhost:7071/api/Fctn_Starter
+#get http://localhost:7071/api/crawl_data_questionaire_results?name=Sonntagsfrage_crawler

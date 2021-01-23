@@ -1,0 +1,44 @@
+appName: Sonntagsfrage
+
+general:
+    forecast_mode: sysdate #dynamic #hard
+    forecast_date: 15.11.2020
+    run_on_azure: False
+
+dev:
+    write_to_azure: False
+
+logging:
+    file_path: ./log/
+    file_name: logs_<YYYYmmddHMS>.log
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s'
+    log_level: DEBUG
+
+azure:
+    sql_db_name: <username>
+    sql_db_pw: <password>
+    server: <server>
+    database: <database>
+    driver: '{ODBC Driver 17 for SQL Server}'
+    port: 1433
+
+siteground:
+    sql_db_name: <username>
+    sql_db_pw: <password>
+    server: <server>
+    database: <database>
+    port: <port>
+
+model:
+    target_cols: ['CDU_CSU', 'SPD', 'GRUENE', 'FDP', 'LINKE', 'PIRATEN', 'AfD', 'Linke_PDS', 'PDS', 'REP_DVU', 'Sonstige']
+    date_col: Datum_dt
+    list_with_algos:
+        - DecisionTreeRegressor
+        - SGDRegressor
+        - GradientBoostingRegressor
+
+google:
+    data_spreadsheet_name: <spreadsheet_name>
+    preds_spreadsheet_name: <spreadsheet_name>
+    preds_worksheet_name: <worksheet_name>
+    data_worksheet_name: <worksheet_name>
