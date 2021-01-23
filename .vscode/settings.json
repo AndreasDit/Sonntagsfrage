@@ -4,7 +4,7 @@
     "azureFunctions.projectLanguage": "Python",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "python.pythonPath": "/Users/andreasditte/Desktop/Private_Projekte/Sonntagsfrage/.venv/bin/python3",
+    "python.pythonPath": "src/.venv",
     "azureFunctions.pythonVenv": ".venv",
     "azureFunctions.templateFilter": "Core",
     "azureFunctions.projectSubpath": "src/azure_functions"
