@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5679b42-770e-4542-98f9-c1516a57b2d6" name="Default Changelist" comment="Added metrics working.">
-      <change beforePath="$PROJECT_DIR$/notebooks/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/Untitled.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/DurableFunctionsHttpStart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/DurableFunctionsHttpStart/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/config/configs.yaml.sample" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/forecaster/utilty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/forecaster/utilty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/azure_functions/utils/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/utils/logs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/azure_functions/Azure_ML/01_Data/load_dataset_from_data_lake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/azure_functions/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/azure_functions/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +52,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ORACLE-SQL&#10;GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/azure_functions/Azure_ML/environments" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/azure_functions/Azure_ML/environments" />
+      <recent name="$PROJECT_DIR$/src/azure_functions/Azure_ML/service-principals" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\code_snippets" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\google_spreadsheets" />
+      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\config" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\utils" />
       <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\data_from_internet" />
@@ -62,13 +70,29 @@
       <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\trash" />
       <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\code_snippets" />
-      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\src\google_spreadsheets" />
-      <recent name="C:\Users\aditte\OneDrive - INFOMOTION GmbH\Private_Projekte\Sonntagsfrage\config" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.load_dataset_from_data_lake">
+    <configuration name="load_dataset_from_data_lake" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Sonntagsfrage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/azure_functions/Azure_ML/01_Data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/azure_functions/Azure_ML/01_Data/load_dataset_from_data_lake.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Sonntagsfrage" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -114,9 +138,11 @@
     <list>
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.load_dataset_from_data_lake" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.load_dataset_from_data_lake" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />

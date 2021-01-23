@@ -129,3 +129,6 @@ obj
 appsettings.json
 local.settings.json
 .python_packages
+/Azure_ML/service-principals/azure-sql-db-sonntagsfrage.json
+/Azure_ML/service-principals/*
+src/Azure_ML/service-principals/*

@@ -9,6 +9,10 @@ PyYAML
 gspread
 sklearn
 xgboost
+azureml-core
+environs
+#azureml-sdk
+#azureml-explain-model
 numpy==1.19.3
 mysql-connector-python
 astroid==2.4.2

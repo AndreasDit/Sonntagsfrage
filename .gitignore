@@ -6,6 +6,7 @@ __pycache__/
 # account data
 sonntagsfrage-295521-484072c2bc32.json
 *.yaml
+Azure-ML/service-principals/*
 
 # tmp data
 *.pkl
@@ -139,6 +140,7 @@ dmypy.json
 src/azure_functions/accounts/test.json
 delete_files.sh
 src/azure_functions/config/configs.yaml
-
+Azure_ML/service-principals/*
+src/Azure_ML/service-principals/*
 *.yaml
 
