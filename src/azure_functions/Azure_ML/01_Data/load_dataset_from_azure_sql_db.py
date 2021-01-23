@@ -7,6 +7,7 @@ Notes: - Besides the FileDataset, there is also TabularDatasets which are better
 """
 
 import os
+import sys
 import azureml as ml
 from azureml.core import Workspace, Datastore, Dataset
 from environs import Env
@@ -14,12 +15,16 @@ from environs import Env
 import pandas as pd
 import yaml
 
-import code_configs
-import helper
-import log
+sys.path.append(os.getcwd())
+sys.path.append('./src/azure_functions/')
+import utils.logs as logs
+import forecaster.utilty as utils
+import utils.configs_for_code as cfg
 
-file = open(code_configs.CONFIG_PATH, 'r')
-cfg = yaml.load(file, Loader=yaml.FullLoader)
+configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
+configs = yaml.load(configs_file, Loader=yaml.FullLoader)
+logger = logs.create_logger(__name__)
+
 
 # get workspace and datastore
 env = Env()
