@@ -36,5 +36,10 @@ git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/f
 git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/accounts/sonntagsfrage-295521-484072c2bc32.json" \
   --prune-empty --tag-name-filter cat -- --all
 
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/Azure_ML/foundation.env" \
+  --prune-empty --tag-name-filter cat -- --all
+
+
+
 # afterwards:
-# git push origin --force --all
+git push origin --force --all
