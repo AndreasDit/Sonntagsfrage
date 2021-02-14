@@ -13,8 +13,9 @@ driver = '{ODBC Driver 17 for SQL Server}'
 
 
 # open connection
-conn_str = 'DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password
-print(conn_str)
+conn_str = 'DRIVER='+driver+';SERVER='+server + \
+    ';PORT=1433;DATABASE='+database+';UID='+username+';PWD=' + password
+# print(conn_str)
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
@@ -45,6 +46,3 @@ sqlstmt = """insert into sonntagsfrage.results_questionaire_clean
     """
 cursor.execute(sqlstmt)
 conn.commit()
-
-
-
