@@ -1,0 +1,40 @@
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/data_prep.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/feature_engineering.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/helper.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/log.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/main_orig.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/model_orig.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/post_processing.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/forecaster/utils.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/azure_functions/accounts/sonntagsfrage-295521-484072c2bc32.json" \
+  --prune-empty --tag-name-filter cat -- --all
+
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/data_prep.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/feature_engineering.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src//forecaster/helper.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/log.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/main_orig.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/model_orig.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/post_processing.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/forecaster/utils.py" \
+  --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch src/accounts/sonntagsfrage-295521-484072c2bc32.json" \
+  --prune-empty --tag-name-filter cat -- --all
+
+# afterwards:
+# git push origin --force --all
