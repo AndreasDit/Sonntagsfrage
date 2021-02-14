@@ -13,7 +13,7 @@ PATH_DATAFRAMES = cfg.PATH_DATAFRAMES
 DATE_COL = configs['model']['date_col']
 
 
-def write_df_to_file(df, filename, path=PATH_DATAFRAMES):
+def write_df_to_file(df, filename, path=PATH_DATAFRAMES, mode='pkl'):
     """
         Saves a Pandas Dataframe to a file.
 
@@ -21,17 +21,21 @@ def write_df_to_file(df, filename, path=PATH_DATAFRAMES):
         :param filename: Name of the file.
         :param path: Path where the file should be written.
     """
-    logger.info("Start write_df_to_file() to path " + path + '/' + filename)
+    logger.info("Start write_df_to_file() to path " +
+                path + '/' + filename + ' with mode ' + mode)
 
     # Azure has read only file system, hence for deployment this has to be set to true
     RUN_ON_AZURE = configs['general']['run_on_azure']
     if RUN_ON_AZURE == False:
-        df.to_pickle(f"{path}/{filename}.pkl", protocol=4)
+        if mode == 'pkl':
+            df.to_pickle(f"{path}/{filename}.pkl", protocol=4)
+        if mode == 'parquet':
+            df.to_parquet(f"{path}/{filename}.parquet")
 
     logger.info("Writing was successful.")
 
 
-def load_df_from_file(filename, path=PATH_DATAFRAMES):
+def load_df_from_file(filename, path=PATH_DATAFRAMES, mode='pkl'):
     """
         Loads a local file into a Pandas Dataframe.
 
@@ -39,9 +43,13 @@ def load_df_from_file(filename, path=PATH_DATAFRAMES):
         :param path: Path to the file.
         :return: pandas.Dataframe: Returns a Pandas Dataframe created from the loaded file.
     """
-    logger.info("Start load_df_from_file() from path " + path + '/' + filename)
+    logger.info("Start load_df_from_file() from path " +
+                path + '/' + filename + ' with mode ' + mode)
 
-    df = pd.read_pickle(f"{path}/{filename}.pkl")
+    if mode == 'pkl':
+        df = pd.read_pickle(f"{path}/{filename}.pkl")
+    if mode == 'parquet':
+        df = pd.read_parquet(f"{path}/{filename}.parquet")
 
     logger.info("Loading was successful.")
     return df
@@ -73,6 +81,7 @@ def set_datecol_as_index_if_needed(df_input):
     logger.info("End set_index_if_needed()")
     return df_final
 
+
 def unset_datecol_as_index_if_needed(df_input):
     """
         This function checks if the dataframe has its date column set as a datetime index. If not it sets the
@@ -96,4 +105,3 @@ def unset_datecol_as_index_if_needed(df_input):
     df_final = df_tmp
     logger.info("End unset_datecol_as_index_if_needed()")
     return df_final
-

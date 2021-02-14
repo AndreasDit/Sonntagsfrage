@@ -7,5 +7,5 @@
     "python.pythonPath": "src/.venv",
     "azureFunctions.pythonVenv": ".venv",
     "azureFunctions.templateFilter": "Core",
-    "azureFunctions.projectSubpath": "src/azure_functions"
+    "azureFunctions.projectSubpath": "src"
 }
