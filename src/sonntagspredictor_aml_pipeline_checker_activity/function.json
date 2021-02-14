@@ -2,7 +2,7 @@
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "name": "pipelineName",
+      "name": "pipelineRun",
       "type": "activityTrigger",
       "direction": "in"
     }
