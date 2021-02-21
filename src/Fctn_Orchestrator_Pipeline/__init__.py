@@ -20,14 +20,14 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
                             "workspace_name": "Sonntagsfrage-predictor"}
 
     # --- start data scraping
-    # result1 = yield context.call_activity('crawl_data_questionaire_results_activity')
+    result1 = yield context.call_activity('crawl_data_questionaire_results_activity')
 
     # --- start data cleaning
-    # result2 = yield context.call_activity('clean_crawled_data_activity')
+    result2 = yield context.call_activity('clean_crawled_data_activity')
 
     # --- start predicting values via the Azure ML Service
     result3, pipeline_run_from_starter = yield context.call_activity('sonntagspredictor_aml_pipeline_starter_activity', aml_pipeline_starter)
-    deadline = context.current_utc_datetime + timedelta(minutes=10)
+    deadline = context.current_utc_datetime + timedelta(minutes=30)
     yield context.create_timer(deadline)
     aml_pipeline_checker = {"pipeline_name": "Sonntagsfrage-Forecaster-Pipeline",
                             "workspace_name": "Sonntagsfrage-predictor",
@@ -35,7 +35,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     result4 = yield context.call_activity('sonntagspredictor_aml_pipeline_starter_activity', aml_pipeline_checker)
 
     # --- start transferring data to the google sheet service
-    # result5 = yield context.call_activity('google_spreadsheets_activity')
+    result5 = yield context.call_activity('google_spreadsheets_activity')
 
     return [
         result1,

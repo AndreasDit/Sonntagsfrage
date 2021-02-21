@@ -7,15 +7,12 @@
 # - run pip install -r requirements.txt
 
 import logging
-import sys
-from azureml.core import Experiment, Workspace, Environment
-from azureml.pipeline.core import Pipeline, PipelineData, PipelineEndpoint
-from environs import Env
+import Azure_ML.aml_pipeline_for_durable as pipeline
 
 
 def main(pipelineRun) -> str:
     # --- wait for started pipeline to finish
     print(f"Waiting for pipeline  to finish...")
-    pipelineRun.wait_for_completion()
+    result = pipeline.check_sonntagsfrage_pipeline(pipelineRun)
 
     return f"Pipeline has finished successfully!"
