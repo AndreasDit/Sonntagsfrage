@@ -1,3 +1,6 @@
+import utils.connectivity as conns
+import utils.configs_for_code as cfg
+import utils.logs as logs
 import gspread
 import yaml
 import os
@@ -6,9 +9,6 @@ import pandas as pd
 
 sys.path.append(os.getcwd())
 
-import utils.logs as logs
-import utils.configs_for_code as cfg
-import utils.connectivity as conns
 
 configs_file = open(cfg.PATH_CONFIG_FILE, 'r')
 configs = yaml.load(configs_file, Loader=yaml.FullLoader)
@@ -35,7 +35,8 @@ def empty_worksheet(worksheet):
 
     # delete the other rows
     nb_rows = worksheet.row_count
-    worksheet.delete_rows(start_index=2, end_index=nb_rows + 1)  # index starts at 1 and not at 0
+    # index starts at 1 and not at 0
+    worksheet.delete_rows(start_index=2, end_index=nb_rows + 1)
 
 
 def fill_worksheet_from_df(worksheet, df_input):

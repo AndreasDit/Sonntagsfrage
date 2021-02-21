@@ -13,7 +13,7 @@ from azureml.pipeline.core import Pipeline, PipelineData, PipelineEndpoint
 from environs import Env
 
 
-def main():
+def start_sonntagsfrage_pipeline():
     # --- read params
     pipelineName = "Sonntagsfrage-Forecaster-Pipeline"
     workspaceName = "Sonntagsfrage-predictor"
@@ -27,14 +27,14 @@ def main():
 
     azure_subscription_id = env("AZURE_SUBSCRIPTION_ID")
     resource_group = env("RESOURCE_GROUP")
-    workspaceName = env("workspace_Name")
+    workspaceName = env("WORKSPACE_NAME")
 
     # --- get workspace, compute target, run config
     print("Getting workspace and compute target...")
     workspace = Workspace(
         subscription_id=azure_subscription_id,
         resource_group=resource_group,
-        workspaceName=workspaceName,
+        workspace_name=workspaceName,
     )
 
     print(f"Get pipeline endpoint '{pipelineName}' (as configured)...")
@@ -48,4 +48,17 @@ def main():
     return f"Pipeline {pipelineName} has been successfully started!", pipeline_run
 
 
-main()
+def check_sonntagsfrage_pipeline(pipelineRun) -> str:
+    # --- wait for started pipeline to finish
+    print(f"Waiting for pipeline  to finish...")
+    pipelineRun.wait_for_completion()
+
+    return f"Pipeline has finished successfully!"
+
+
+msg, pipiline_run = start_sonntagsfrage_pipeline()
+
+print(
+    f"Start checking for pipeline status of pipeline run '{pipiline_run}' ...")
+result = check_sonntagsfrage_pipeline(pipiline_run)
+print(result)
