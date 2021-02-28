@@ -14,7 +14,7 @@ import azure.durable_functions as df
 async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
     client = df.DurableOrchestrationClient(starter)
     # client = df.DurableClient(starter)
-    instance_id = await client.start_new("Fctn_Orchestrator_Preprocess", None, None)
+    instance_id = await client.start_new("Fctn_Orchestrator_Postprocess", None, None)
 
     logging.info(f"Started orchestration with ID = '{instance_id}'.")
 
