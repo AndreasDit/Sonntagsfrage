@@ -13,7 +13,7 @@ PATH_DATAFRAMES = cfg.PATH_DATAFRAMES
 DATE_COL = configs['model']['date_col']
 
 
-def write_df_to_file(df, filename, path=PATH_DATAFRAMES, mode='pkl'):
+def write_df_to_file(df, filename, path=PATH_DATAFRAMES, mode='pkl', force_write=False):
     """
         Saves a Pandas Dataframe to a file.
 
@@ -26,7 +26,7 @@ def write_df_to_file(df, filename, path=PATH_DATAFRAMES, mode='pkl'):
 
     # Azure has read only file system, hence for deployment this has to be set to true
     RUN_ON_AZURE = configs['general']['run_on_azure']
-    if RUN_ON_AZURE == False:
+    if (RUN_ON_AZURE == False) or (force_write==True):
         if mode == 'pkl':
             df.to_pickle(f"{path}/{filename}.pkl", protocol=4)
         if mode == 'parquet':

@@ -4,13 +4,12 @@
 import argparse
 import sys
 from pathlib import Path
-import json
 
 from azureml.core import Experiment, Workspace, Environment
 from azureml.core.compute import ComputeTarget
 from azureml.core.runconfig import CondaDependencies, RunConfiguration
-from azureml.pipeline.core.schedule import Schedule, ScheduleRecurrence
 from azureml.pipeline.core import Pipeline, PipelineData, PipelineEndpoint
+from azureml.pipeline.core.schedule import Schedule, ScheduleRecurrence
 from azureml.pipeline.steps import EstimatorStep, HyperDriveStep, PythonScriptStep
 from azureml.train.dnn import TensorFlow
 from azureml.train.hyperdrive import (
@@ -21,9 +20,9 @@ from azureml.train.hyperdrive import (
     RandomParameterSampling,
     choice,
 )
-from environs import Env
 from azureml.core.authentication import ServicePrincipalAuthentication
-
+from environs import Env
+import json
 
 # pylint: enable=unused-import
 
@@ -85,6 +84,7 @@ svc_pr = ServicePrincipalAuthentication(
     tenant_id=svcpr_data['tenantId'],
     service_principal_id=svcpr_data['clientId'],
     service_principal_password=svcpr_data['clientSecret'])
+
 
 # --- get workspace, compute target, run config
 print("Getting workspace and compute target...")
