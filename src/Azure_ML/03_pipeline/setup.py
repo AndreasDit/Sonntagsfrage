@@ -4,6 +4,7 @@
 import argparse
 import sys
 from pathlib import Path
+import json
 
 from azureml.core import Experiment, Workspace, Environment
 from azureml.core.compute import ComputeTarget
@@ -21,6 +22,8 @@ from azureml.train.hyperdrive import (
     choice,
 )
 from environs import Env
+from azureml.core.authentication import ServicePrincipalAuthentication
+
 
 # pylint: enable=unused-import
 
@@ -73,6 +76,15 @@ workspace_region = env("WORKSPACE_REGION")
 gpu_cluster_name = env("GPU_BATCH_CLUSTER_NAME")
 cpu_cluster_name = env("CPU_BATCH_CLUSTER_NAME")
 
+# --- get creds for aservice principalv
+with open('Azure_ML/service_principals/sonntagsfrage-ml-auth-file.json') as f:
+    svcpr_data = json.load(f)
+
+# --- get service principal
+svc_pr = ServicePrincipalAuthentication(
+    tenant_id=svcpr_data['tenantId'],
+    service_principal_id=svcpr_data['clientId'],
+    service_principal_password=svcpr_data['clientSecret'])
 
 # --- get workspace, compute target, run config
 print("Getting workspace and compute target...")
@@ -80,6 +92,7 @@ workspace = Workspace(
     subscription_id=azure_subscription_id,
     resource_group=resource_group,
     workspace_name=workspace_name,
+    auth=svc_pr
 )
 
 compute_target = ComputeTarget(workspace=workspace, name=cpu_cluster_name)
