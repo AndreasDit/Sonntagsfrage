@@ -14,6 +14,7 @@ environs
 azureml-core
 azureml-sdk
 pathlib
+requests
 # azureml-train-automl
 azureml-explain-model
 numpy==1.19.3

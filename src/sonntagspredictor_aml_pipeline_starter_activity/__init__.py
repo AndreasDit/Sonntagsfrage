@@ -15,4 +15,4 @@ def main(pipelineName) -> str:
     print(f"Triggering pipeline endpoint '{pipelineName}' (as configured)...")
     msg, pipeline_run = pipeline.start_sonntagsfrage_pipeline()
 
-    return f"Pipeline {pipelineName} has been successfully started!", pipeline_run
+    return f"Pipeline {pipelineName} has been successfully started!" #, pipeline_run
