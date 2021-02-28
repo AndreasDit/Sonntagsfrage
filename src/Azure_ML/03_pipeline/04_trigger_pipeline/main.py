@@ -14,7 +14,7 @@ print("Transforming data...")
 print("Initialization...")
 
 # --- Define pipeline continuation
-url_pipeline = "https://sonntagsfrage-etl-pipelines.azurewebsites.net/api/orchestrators/test?"
+url_pipeline = "https://sonntagsfrage-etl-pipelines.azurewebsites.net/api/orchestrators/DurableFunctionsHttpStartPostprocess?"
 requests.post(url = url_pipeline)
 
 # --- Done
