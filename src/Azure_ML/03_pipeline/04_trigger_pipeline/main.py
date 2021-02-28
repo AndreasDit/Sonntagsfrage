@@ -12,6 +12,12 @@ print("Transforming data...")
 
 # --- initialization
 print("Initialization...")
+# - define and parse script arguments
+parser = argparse.ArgumentParser(allow_abbrev=False)
+parser.add_argument("--input-dir", type=str,
+                    required=True, help="input directory")
+args = parser.parse_args()
+input_dir = args.input_dir
 
 # --- Define pipeline continuation
 url_pipeline = "https://sonntagsfrage-etl-pipelines.azurewebsites.net/api/orchestrators/DurableFunctionsHttpStartPostprocess?"
