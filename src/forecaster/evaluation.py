@@ -71,10 +71,10 @@ def get_metrics_for_all_parties(df_input, date, estimator):
         metrics_series.append(estimator)
         metrics_array.append(metrics_series)
         # --- Log metrics in experiment
-        logger.info(metrics_array)
+        # logger.info(metrics_array)
         str_date = date.strftime('%Y%m%d')
-        logger.info('str_date')
-        logger.info(str_date)
+        # logger.info('str_date')
+        # logger.info(str_date)
         run.log_row("Metrics for certain Date, Party and Estimator",
                     date=str_date,
                     mae=metrics_series[0],
