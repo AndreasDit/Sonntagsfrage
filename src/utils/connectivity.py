@@ -124,7 +124,7 @@ def write_df_to_sql_db(df_input, conn, cursor, target, header=True, delete_dates
     for col in df_string.columns.values:
         df_string[col] = df_string[col].apply(lambda x: "'" + x + "'")
 
-    if delete_dates is False:
+    if delete_dates == False:
         sqlstmt = """truncate table  """ + target
         logger.info(sqlstmt)
         cursor.execute(sqlstmt)
