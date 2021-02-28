@@ -8,8 +8,10 @@
 
 import logging
 import sys
+import json
 from azureml.core import Experiment, Workspace, Environment
 from azureml.pipeline.core import Pipeline, PipelineData, PipelineEndpoint
+from azureml.core.authentication import ServicePrincipalAuthentication
 from environs import Env
 
 
@@ -29,12 +31,23 @@ def start_sonntagsfrage_pipeline():
     resource_group = env("RESOURCE_GROUP")
     workspaceName = env("WORKSPACE_NAME")
 
+    # --- get creds for aservice principalv
+    with open('Azure_ML/service_principals/sonntagsfrage-ml-auth-file.json') as f:
+        svcpr_data = json.load(f)
+
+    # --- get service principal
+    svc_pr = ServicePrincipalAuthentication(
+        tenant_id=svcpr_data['tenantId'],
+        service_principal_id=svcpr_data['clientId'],
+        service_principal_password=svcpr_data['clientSecret'])
+
     # --- get workspace, compute target, run config
     print("Getting workspace and compute target...")
     workspace = Workspace(
         subscription_id=azure_subscription_id,
         resource_group=resource_group,
         workspace_name=workspaceName,
+        auth=svc_pr
     )
 
     print(f"Get pipeline endpoint '{pipelineName}' (as configured)...")
