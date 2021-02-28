@@ -52,7 +52,7 @@ output_path = os.path.join(output_dir)
 output_fname = 'df_all_data'
 mode = 'parquet'
 print("Writing file "+ output_fname +"."+mode+" to path "+output_path+" ...")
-utils.write_df_to_file(df_all_data, output_fname, output_path, mode)
+utils.write_df_to_file(df_all_data, output_fname, output_path, mode, force_write=True)
 
 # --- Done
 print("Done.")
