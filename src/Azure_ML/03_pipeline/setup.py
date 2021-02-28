@@ -196,6 +196,8 @@ trigger_pipeline_step = PythonScriptStep(
     source_directory='.',
     compute_target=compute_target,
     runconfig=run_config,
+    inputs=[calc_predictions_dir],
+    arguments=["--input-dir", calc_predictions_dir],
     allow_reuse=False,
 )
 
