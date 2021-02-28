@@ -189,6 +189,16 @@ calc_predictions_step = PythonScriptStep(
     allow_reuse=False,
 )
 
+# - Trigger Next Pipeline Steps
+trigger_pipeline_step = PythonScriptStep(
+    name="Trigger Pipeline",
+    script_name=pipeline_path + "04_trigger_pipeline/main.py",
+    source_directory='.',
+    compute_target=compute_target,
+    runconfig=run_config,
+    allow_reuse=False,
+)
+
 # # - Train Models
 
 # # # option 1 - no hyperparameter optimization, single model without hyperparameter tuning
@@ -282,6 +292,7 @@ pipeline_steps = [
     extract_data_step,
     transform_data_step,
     calc_predictions_step,
+    trigger_pipeline_step,
     # train_models_step,
     # register_best_model_step,
     # deploy_new_model_step,

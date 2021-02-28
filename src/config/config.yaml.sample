@@ -34,8 +34,8 @@ model:
     date_col: Datum_dt
     list_with_algos:
         - DecisionTreeRegressor
+        - XGBRegressor
         - SGDRegressor
-        - GradientBoostingRegressor
 
 google:
     data_spreadsheet_name: < - >
