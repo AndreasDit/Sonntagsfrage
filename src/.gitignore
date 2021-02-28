@@ -129,3 +129,6 @@ appsettings.json
 local.settings.json
 .python_packages
 *.env
+sonntagsfrage-ml-auth-attr.json
+sonntagsfrage-ml-auth-file.json
+*.json
