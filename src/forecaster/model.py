@@ -109,11 +109,9 @@ def generate_predictions(df_input, estimator):
     first_date = df_given_idx.index.min()
 
     # --- train model with rolling window
-    logger.info(all_dates_sorted)
-    logger.info(range(1, len(all_dates_sorted[1:])))
-    for idx in range(1, len(all_dates_sorted[1:])):
-        # logger.info("Generate preds for date " + str(date))
+    for idx in range(1, len(all_dates_sorted[1:])+1):
         date = all_dates_sorted[idx]
+        logger.info("Generate preds for date " + str(date))
         logger.info(date)
         logger.info(idx)
         logger.info(all_dates_sorted)
