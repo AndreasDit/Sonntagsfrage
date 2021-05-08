@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "crawl_data_questionaire_results_activity",
+					"functionName": "crawl_data_questionaire_results",
 					"method": "POST",
 					"body": {
 						"body": ""
