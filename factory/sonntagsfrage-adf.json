@@ -1,0 +1,9 @@
+{
+	"name": "sonntagsfrage-adf",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "272f4ee4-7c0c-4d1b-9f2a-10bc3b418ac4",
+		"tenantId": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
+	}
+}
