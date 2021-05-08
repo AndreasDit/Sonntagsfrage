@@ -1,6 +1,57 @@
 {
 	"name": "000-master-pipeline",
 	"properties": {
+		"activities": [
+			{
+				"name": "Crawl_Data",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "crawl_data_questionaire_results",
+					"method": "POST"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunction01",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Azure Function1",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [
+					{
+						"activity": "Crawl_Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": " clean_crawled_data",
+					"method": "POST"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunction01",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
 		"folder": {
 			"name": "sonntagsfrage"
 		},
