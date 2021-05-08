@@ -17,7 +17,9 @@
 				"typeProperties": {
 					"functionName": "crawl_data_questionaire_results",
 					"method": "POST",
-					"body": " "
+					"body": {
+						"body": ""
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction01",
@@ -46,7 +48,9 @@
 				"typeProperties": {
 					"functionName": " clean_crawled_data",
 					"method": "POST",
-					"body": " "
+					"body": {
+						"body": ""
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction01",
