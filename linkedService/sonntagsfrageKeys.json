@@ -1,0 +1,10 @@
+{
+	"name": "sonntagsfrageKeys",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://sonntagsfrage-keys.vault.azure.net/"
+		}
+	}
+}
