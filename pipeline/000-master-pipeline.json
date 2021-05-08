@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "000-master-pipeline",
 	"properties": {
 		"folder": {
 			"name": "sonntagsfrage"
