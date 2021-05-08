@@ -11,7 +11,7 @@
 					"referenceName": "sonntagsfrageKeys",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "sonntagsfrage-ETL-pipelines-HOST-KEY-MASTER"
+				"secretName": "sonntagsfrage-ETL-pipelines-HOST-KEY-DEFAULT"
 			}
 		}
 	}
