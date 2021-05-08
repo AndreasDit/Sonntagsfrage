@@ -5,7 +5,14 @@
 			{
 				"name": "Crawl_Data",
 				"type": "AzureFunctionActivity",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Clean_Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -27,16 +34,9 @@
 				}
 			},
 			{
-				"name": "Azure Function1",
+				"name": "Clean_Data",
 				"type": "AzureFunctionActivity",
-				"dependsOn": [
-					{
-						"activity": "Crawl_Data",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
