@@ -28,16 +28,6 @@ args = parser.parse_args()
 input_dir = args.input_dir
 output_dir = args.output_dir
 
-# --- get creds for aservice principalv
-with open('Azure_ML/service_principals/sonntagsfrage-ml-auth-file.json') as f:
-    svcpr_data = json.load(f)
-
-# --- get service principal
-svc_pr = ServicePrincipalAuthentication(
-    tenant_id=svcpr_data['tenantId'],
-    service_principal_id=svcpr_data['clientId'],
-    service_principal_password=svcpr_data['clientSecret'])
-
 # - get run context
 run = Run.get_context()
 
@@ -46,9 +36,7 @@ print("Ensuring that the output directory exists...")
 os.makedirs(output_dir, exist_ok=True)
 
 # --- get workspace and datastore
-env = Env()
-env.read_env("Azure_ML/foundation.env")
-ws = Workspace(env("AZURE_SUBSCRIPTION_ID"), env("RESOURCE_GROUP"), env("WORKSPACE_NAME"), auth=svc_pr)
+ws = run.experiment.workspace
 datastore = Datastore.get_default(ws)
 
 # # --- load data
