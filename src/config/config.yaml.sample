@@ -3,6 +3,7 @@ appName: Sonntagsfrage
 general:
     forecast_mode: sysdate #dynamic #hard
     forecast_date: 15.11.2020
+    run_on_azure: True
 
 dev:
     write_to_azure: True
@@ -33,8 +34,8 @@ model:
     date_col: Datum_dt
     list_with_algos:
         - DecisionTreeRegressor
+        - XGBRegressor
         - SGDRegressor
-        - GradientBoostingRegressor
 
 google:
     data_spreadsheet_name: < - >

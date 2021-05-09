@@ -1,6 +1,7 @@
 import logging
 import azure.functions as func
 import google_spreadsheets.load_data_spreadsheet as google
+import json
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -9,6 +10,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     google.main()
 
     return func.HttpResponse(
-            "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-            status_code=200
+        json.dumps({
+        'response':"This HTTP triggered function did load data into a google spreadsheet."
+        }),
+        status_code=200
     )

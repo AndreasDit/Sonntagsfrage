@@ -40,7 +40,7 @@ def export_results(df_input):
 
     # write to Azure SQL DB
     if WRITE_TO_AZURE: 
-        write_df_to_sql_db(df_output, conn, cursor, target_table_name, False)
+        write_df_to_sql_db(df_output, conn, cursor, target_table_name, header=False, delete_dates=False)
 
 
 def export_metrics(df_input):
