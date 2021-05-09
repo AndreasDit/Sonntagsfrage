@@ -82,7 +82,7 @@
 				}
 			},
 			{
-				"name": "Azure Function1",
+				"name": "Send_preds_to_google_spreadsheet",
 				"type": "AzureFunctionActivity",
 				"dependsOn": [
 					{
