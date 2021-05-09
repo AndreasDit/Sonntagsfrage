@@ -13,6 +13,9 @@ sonntagsfrage-295521-484072c2bc32.json
 # C extensions
 *.so
 
+*.json
+*.env
+
 # Distribution / packaging
 .Python
 build/
