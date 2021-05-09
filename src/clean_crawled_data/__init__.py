@@ -65,6 +65,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
     return func.HttpResponse(
-             "This HTTP triggered function did transform the data in the Azuer SQL DB.",
-             status_code=200
+            json.dumps({
+            'response':"This HTTP triggered function did transform the data in the Azuer SQL DB."
+            }),
+            status_code=200
         )
