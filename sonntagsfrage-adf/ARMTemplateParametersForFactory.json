@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sonntagsfrage-adf"
+		},
+		"AzureFunction01_properties_typeProperties_functionAppUrl": {
+			"value": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_subscriptionId": {
+			"value": "ffb77607-308f-4e35-baf6-a7ff61a55056"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
+			"value": "priv-proj-sonntagsfrage"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
+			"value": "2274a57e-306c-4a6e-9fc1-79cbde3781de"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_tenant": {
+			"value": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
+		},
+		"sonntagsfrageKeys_properties_typeProperties_baseUrl": {
+			"value": "https://sonntagsfrage-keys.vault.azure.net/"
+		},
+		"test_az_func_properties_typeProperties_functionAppUrl": {
+			"value": "https://az-func-on-adf.azurewebsites.net"
+		}
+	}
+}

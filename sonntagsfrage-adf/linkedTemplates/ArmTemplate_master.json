@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "sonntagsfrage-adf"
+		},
+		"AzureFunction01_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "ffb77607-308f-4e35-baf6-a7ff61a55056"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "priv-proj-sonntagsfrage"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "2274a57e-306c-4a6e-9fc1-79cbde3781de"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
+		},
+		"sonntagsfrageKeys_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://sonntagsfrage-keys.vault.azure.net/"
+		},
+		"test_az_func_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://az-func-on-adf.azurewebsites.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "sonntagsfrage-adf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"sonntagsfrageKeys_properties_typeProperties_baseUrl": {
+						"value": "[parameters('sonntagsfrageKeys_properties_typeProperties_baseUrl')]"
+					},
+					"AzureFunction01_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction01_properties_typeProperties_functionAppUrl')]"
+					},
+					"SonntagsfragePredictor_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_subscriptionId')]"
+					},
+					"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]"
+					},
+					"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]"
+					},
+					"SonntagsfragePredictor_properties_typeProperties_tenant": {
+						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_tenant')]"
+					},
+					"test_az_func_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('test_az_func_properties_typeProperties_functionAppUrl')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
