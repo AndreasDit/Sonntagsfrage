@@ -1,5 +1,0 @@
-get http://localhost:7071/api/orchestrators/Fctn_Orchestrator_Pipeline
-# get http://localhost:7071/api/DurableFunctionsHttpStart
-
-
-#get http://localhost:7071/api/crawl_data_questionaire_results?name=Sonntagsfrage_crawler
