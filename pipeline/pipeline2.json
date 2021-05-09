@@ -15,7 +15,9 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "crawl_data_questionaire_results"
+					"functionName": "crawl_data_questionaire_results",
+					"method": "POST",
+					"body": "test"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction01",
