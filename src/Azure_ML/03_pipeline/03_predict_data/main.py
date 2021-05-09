@@ -5,7 +5,7 @@ import gzip
 import os
 
 import numpy as np
-from azureml.core import Run
+from azureml.core import Run, Dataset, Datastore
 import forecaster.feat_engineering as feat
 import forecaster.utilty as utils
 import forecaster.model as model
@@ -87,6 +87,19 @@ df_with_preds, df_metrics = model.combined_restults_from_all_algorithms(
 # --- define output parameters
 output_fname = 'df_with_preds'
 mode = 'parquet'
+
+# --- get ws from run
+run = Run.get_context()
+ws = run.experiment.workspace
+datastore = Datastore.get_default(ws)
+
+# --- register preds
+df_for_register = utils.unset_datecol_as_index_if_needed(df_with_preds)
+Dataset.Tabular.register_pandas_dataframe(df_for_register, (datastore, 'azure-ml-datasets'), 'sonntagsfrage_preds')
+
+# --- register metrics
+df_for_register = utils.unset_datecol_as_index_if_needed(df_metrics)
+Dataset.Tabular.register_pandas_dataframe(df_for_register, (datastore, 'azure-ml-datasets'), 'sonntagsfrage_metrics')
 
 # --- write output to Azure SQL DB
 print("Writing file to Azure SQL DB ...")
