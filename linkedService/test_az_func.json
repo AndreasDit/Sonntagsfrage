@@ -1,0 +1,18 @@
+{
+	"name": "test_az_func",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://az-func-on-adf.azurewebsites.net",
+			"functionKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "sonntagsfrageKeys",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "az-func-on-adf-host-key-default"
+			}
+		}
+	}
+}
