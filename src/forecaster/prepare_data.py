@@ -63,6 +63,8 @@ def load_survey_data():
 
     # get forecast date
     fcast_date = get_forecast_day()
+    logger.info("fcast_date")
+    logger.info(fcast_date)
 
     # extract Data from Azure SQL DB and one dummy line for the day that will be predicted here
     sql_stmt = """
@@ -92,8 +94,8 @@ def clean_survey_data(df_input):
 
     # clean Datum
     df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum'].astype(str)
-    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].str.replace('*', '')
-    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].apply(lambda x: pd.to_datetime(x) if len(x.split('.')) == 3 else None)
+    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].str.replace('*', '', regex=False)
+    df_input_pre_clean['Datum_dt'] = df_input_pre_clean['Datum_dt'].apply(lambda x: pd.to_datetime(x, format='%d.%m.%Y') if len(x.split('.')) == 3 else None)
     df_input_pre_clean['Datum_dt'] = pd.to_datetime(df_input_pre_clean['Datum_dt'], format='%d.%m.%Y')
     df_input_clean_Datum = df_input_pre_clean.dropna(subset=['Datum_dt'])
 

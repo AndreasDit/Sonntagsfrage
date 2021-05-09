@@ -59,6 +59,7 @@ def create_time_features(df_input):
     # generate simple time features to model seasonal behaviour
     df_wip_time_features_idx['day_in_month'] = df_wip_time_features_idx.index.day
     df_wip_time_features_idx['calendar_week'] = df_wip_time_features_idx.index.isocalendar().week
+    df_wip_time_features_idx['calendar_week'] =df_wip_time_features_idx['calendar_week'].astype('float64')
     df_wip_time_features_idx['weekday'] = df_wip_time_features_idx.index.weekday
     df_wip_time_features_idx['dayofyear'] = df_wip_time_features_idx.index.dayofyear
     df_wip_time_features_idx['month'] = df_wip_time_features_idx.index.month

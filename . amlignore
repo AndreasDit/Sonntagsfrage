@@ -4,10 +4,6 @@ __pycache__/
 *$py.class
 
 # account data
-sonntagsfrage-295521-484072c2bc32.json
-sonntagsfrage-ml-auth-attr.json
-sonntagsfrage-ml-auth-file.json
-*.json
 *.yaml
 
 # tmp data
@@ -15,10 +11,6 @@ sonntagsfrage-ml-auth-file.json
 
 # C extensions
 *.so
-
-*.json
-*.DS_store
-*.env
 
 # Distribution / packaging
 .Python
@@ -148,5 +140,5 @@ delete_files.sh
 src/azure_functions/config/configs.yaml
 
 *.yaml
-*.env
+
 

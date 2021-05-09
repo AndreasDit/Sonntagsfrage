@@ -1,0 +1,11 @@
+name: azure-ml-default
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - jupyter
+  - pip:
+    - azureml-sdk
+    - azureml-train-automl
+    - azureml-explain-model
