@@ -1,0 +1,22 @@
+{
+	"name": "SonntagsfragePredictor",
+	"properties": {
+		"annotations": [],
+		"type": "AzureMLService",
+		"typeProperties": {
+			"subscriptionId": "ffb77607-308f-4e35-baf6-a7ff61a55056",
+			"resourceGroupName": "priv-proj-sonntagsfrage",
+			"mlWorkspaceName": "Sonntagsfrage-predictor",
+			"servicePrincipalId": "2274a57e-306c-4a6e-9fc1-79cbde3781de",
+			"servicePrincipalKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "sonntagsfrageKeys",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sp-aml-sonntagsfrage-clientSecret"
+			},
+			"tenant": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
+		}
+	}
+}
