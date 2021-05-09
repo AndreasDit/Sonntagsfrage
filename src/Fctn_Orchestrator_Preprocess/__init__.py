@@ -29,7 +29,9 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
     return [
         result1,
-        result2, result3]
+        result2
+        , result3
+        ]
 
 
 main = df.Orchestrator.create(orchestrator_function)

@@ -1,0 +1,5 @@
+POST http://localhost:7071/runtime/webhooks/durabletask/instances/f009c7624b0f4ef5bb86c57168d6f4ac/terminate?reason=no_reason&taskHub=TestHubName&connection=Storage&code=M0UcLHrphi3l6aU9aznDqEtyD2N4vAbyO4azy5sADm0id10TgCA1Zg==
+
+POST http://localhost:7071/api/status/
+
+
