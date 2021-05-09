@@ -294,7 +294,7 @@ pipeline_steps = [
     extract_data_step,
     transform_data_step,
     calc_predictions_step,
-    trigger_pipeline_step,
+    # trigger_pipeline_step,
     # train_models_step,
     # register_best_model_step,
     # deploy_new_model_step,

@@ -6,6 +6,8 @@ import os
 
 import numpy as np
 import requests
+from google_spreadsheets import load_data_spreadsheet as google
+
 
 print("Transforming data...")
 
@@ -19,9 +21,8 @@ parser.add_argument("--input-dir", type=str,
 args = parser.parse_args()
 input_dir = args.input_dir
 
-# --- Define pipeline continuation
-url_pipeline = "https://sonntagsfrage-etl-pipelines.azurewebsites.net/api/orchestrators/DurableFunctionsHttpStartPostprocess?"
-requests.post(url = url_pipeline)
+# --- Load results to google spreadsheets
+google.main()
 
 # --- Done
 print("Done.")
