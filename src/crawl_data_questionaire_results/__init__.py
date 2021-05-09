@@ -184,9 +184,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
     return func.HttpResponse(
-             "This HTTP triggered function did crawl the required sites and wrote the resultst into an Azuer SQL DB.",
-             status_code=200
+            json.dumps({
+            'response':"This HTTP triggered function did crawl the required sites and wrote the resultst into an Azuer SQL DB."
+            }),
+            status_code=200
         )
+
+    
 
     ###### useful sql snippets #####
 
