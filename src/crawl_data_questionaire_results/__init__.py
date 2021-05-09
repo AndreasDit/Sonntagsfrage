@@ -3,6 +3,7 @@ import pyodbc
 import datetime as dt
 import os
 import scrapy
+import json
 # import from crochet import setup
 from twisted.internet import reactor
 from scrapy.crawler import CrawlerProcess, CrawlerRunner 

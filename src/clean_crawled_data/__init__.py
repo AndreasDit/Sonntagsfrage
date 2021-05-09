@@ -3,6 +3,7 @@ import pyodbc
 import os
 import azure.functions as func
 import sys
+import json
 
 sys.path.append(os.getcwd())
 # sys.path.insert(0, '..')
@@ -54,7 +55,19 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         ,cast( concat( '0', replace(isnull(Linke_PDS, '0'), '-', '0')) as numeric) Linke_PDS    
         ,cast( concat( '0', replace(isnull(PDS      , '0'), '-', '0')) as numeric) PDS          
         ,cast( concat( '0', replace(isnull(REP_DVU  , '0'), '-', '0')) as numeric) REP_DVU  
-        ,cast( concat( '0', replace(replace(replace( isnull(Sonstige , '0'), '-', '0'), 'PIR', '0'), 'WASG3', '0')) as numeric) Sonstige
+        ,cast( 
+            concat( '0', 
+                replace(
+                    replace(
+                        replace(
+                            replace( 
+                                isnull(Sonstige , '0'), '-', '0'
+                                ), 'PIR', '0'
+                            ), 'WASG3', '0'
+                        ), 'FW', '')
+                    )
+                as numeric
+            ) Sonstige
         ,Befragte   
         ,Zeitraum
         ,''
