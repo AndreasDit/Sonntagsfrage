@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "Hello_activity",
+					"functionName": "HttpTrigger",
 					"method": "POST",
 					"body": "\""
 				},
