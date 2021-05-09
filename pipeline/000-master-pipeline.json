@@ -44,7 +44,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": " clean_crawled_data",
+					"functionName": "clean_crawled_data",
 					"method": "POST",
 					"body": "test"
 				},
