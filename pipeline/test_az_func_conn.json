@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"functionName": "HttpTrigger",
 					"method": "POST",
-					"body": "{\n  \"body\":\", \"name\":\"test\"\n}"
+					"body": "\""
 				},
 				"linkedServiceName": {
 					"referenceName": "test_az_func",
