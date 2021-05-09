@@ -17,10 +17,12 @@ logger = logs.create_logger(__name__)
 DATA_SPREADSHEET_NAME = configs['google']['data_spreadsheet_name']
 PREDS_SPREADSHEET_NAME = configs['google']['preds_spreadsheet_name']
 METRICS_SPREADSHEET_NAME = configs['google']['metrics_spreadsheet_name']
+NEXT_SUNDAY_SPREADSHEET_NAME = configs['google']['next_sunday_spreadsheet_name']
 
 DATA_WORKSHEET_NAME = configs['google']['data_worksheet_name']
 PREDS_WORKSHEET_NAME = configs['google']['preds_worksheet_name']
 METRICS_WORKSHEET_NAME = configs['google']['metrics_worksheet_name']
+NEXT_SUNDAY_WORKSHEET_NAME = configs['google']['next_sunday_worksheet_name']
 
 
 def empty_worksheet(worksheet):
@@ -79,27 +81,34 @@ def main():
     sheet_data = conn_google.open(DATA_SPREADSHEET_NAME)
     sheet_preds = conn_google.open(PREDS_SPREADSHEET_NAME)
     sheet_metrics =  conn_google.open(METRICS_SPREADSHEET_NAME)
+    sheet_next_sunday =  conn_google.open(NEXT_SUNDAY_SPREADSHEET_NAME)
 
     # load worksheets
     data_worksheet = sheet_data.worksheet(DATA_WORKSHEET_NAME)
     preds_worksheet = sheet_preds.worksheet(PREDS_WORKSHEET_NAME)
     metrics_worksheet = sheet_metrics.worksheet(METRICS_WORKSHEET_NAME)
+    next_sunday_worksheet = sheet_next_sunday.worksheet(NEXT_SUNDAY_WORKSHEET_NAME)
 
     # load tables from Azure SQL DB
     sql_stmt = """select * from sonntagsfrage.v_predictions_questionaire_pivot"""
     df_table_preds = pd.read_sql(sql_stmt, conn_azure)
     sql_stmt = """select * from sonntagsfrage.v_results_questionaire_clean_pivot"""
     df_table_data = pd.read_sql(sql_stmt, conn_azure)
-    sql_stmt = """select * from sonntagsfrage.metric_results"""
+    sql_stmt = """select * from sonntagsfrage.v_metrics_pivot"""
     df_table_metrics = pd.read_sql(sql_stmt, conn_azure)
+    sql_stmt = """select * from sonntagsfrage.v_prediction_next_sunday_pivot"""
+    df_table_next_sunday = pd.read_sql(sql_stmt, conn_azure)
+
 
     empty_worksheet(data_worksheet)
     empty_worksheet(preds_worksheet)
     empty_worksheet(metrics_worksheet)
+    empty_worksheet(next_sunday_worksheet)
 
     fill_worksheet_from_df(data_worksheet, df_table_data)
     fill_worksheet_from_df(preds_worksheet, df_table_preds)
     fill_worksheet_from_df(metrics_worksheet, df_table_metrics)
+    fill_worksheet_from_df(next_sunday_worksheet, df_table_next_sunday)
 
 
 if __name__ == "__main__":
