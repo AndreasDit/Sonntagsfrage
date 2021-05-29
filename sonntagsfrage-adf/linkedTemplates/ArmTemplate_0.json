@@ -86,7 +86,7 @@
 				"typeProperties": {
 					"subscriptionId": "[parameters('SonntagsfragePredictor_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]",
-					"mlWorkspaceName": "Sonntagsfrage-predictor",
+					"mlWorkspaceName": "priv-proj-sonntagsfrage-aml01",
 					"servicePrincipalId": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]",
 					"servicePrincipalKey": {
 						"type": "AzureKeyVaultSecret",
@@ -146,7 +146,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"experimentName": "Sonntagsfrage-Forecaster",
-							"mlPipelineEndpointId": "7f57ce0e-8e49-4e9a-9a16-b6659cc92772"
+							"mlPipelineEndpointId": "5927d9e5-7f2c-4f45-9740-cd8b83399739"
 						},
 						"linkedServiceName": {
 							"referenceName": "SonntagsfragePredictor",
