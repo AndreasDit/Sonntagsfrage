@@ -67,7 +67,7 @@ def fill_worksheet_from_df(worksheet, df_input):
     worksheet.insert_rows(data_rows, 2)
 
 
-def main():
+def main(credentials=None):
     """
         Main function, performs the data transfer from the Azure SQL DB to a google spreadsheet document..
     """
@@ -75,7 +75,10 @@ def main():
 
     # open connections
     conn_azure, cursor_azure = conns.connect_to_azure_sql_db()
-    conn_google = conns.connect_to_google_spreadsheets()
+    if credentials:
+        conn_google = conns.connect_to_google_spreadsheets(auth_type='env', credentials=credentials)
+    else:
+        conn_google = conns.connect_to_google_spreadsheets()
 
     # load sheets
     sheet_data = conn_google.open(DATA_SPREADSHEET_NAME)

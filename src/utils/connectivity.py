@@ -74,7 +74,7 @@ def connect_to_siteground_sql_db():
     return conn, cursor
 
 
-def connect_to_google_spreadsheets():
+def connect_to_google_spreadsheets(auth_type='file', credentials=None):
     """
         This function creates a connection to google spreadsheets using the service account. To access a certain
             document the file must be explicitely shared with this service account via the mail under
@@ -84,7 +84,10 @@ def connect_to_google_spreadsheets():
     """
     logger.info('Start connect_to_google_spreadsheets()')
 
-    conn = gspread.service_account(filename=PATH_GOOGLE_SERVICE_ACCOUNT)
+    if auth_type == 'file':
+        conn = gspread.service_account(filename=PATH_GOOGLE_SERVICE_ACCOUNT)
+    elif auth_type == 'env':
+        conn = gspread.service_account_from_dict(credentials)
 
     return conn
 

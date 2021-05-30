@@ -27,39 +27,6 @@ import json
 # pylint: enable=unused-import
 
 # --- define and parse script arguments
-parser = argparse.ArgumentParser(allow_abbrev=False)
-trigger_after_publish_parser = parser.add_mutually_exclusive_group(
-    required=True)
-trigger_after_publish_parser.add_argument(
-    "--trigger-after-publish",
-    dest="trigger_after_publish",
-    action="store_true",
-    help="Triggers the pipeline after it has been published.",
-)
-trigger_after_publish_parser.add_argument(
-    "--no-trigger-after-publish",
-    dest="trigger_after_publish",
-    action="store_false",
-    help="Publishes the pipeline but does not trigger it.",
-)
-
-schedule_parser = parser.add_mutually_exclusive_group(required=True)
-schedule_parser.add_argument(
-    "--schedule",
-    dest="schedule",
-    action="store_true",
-    help="Attaches the schedule to the pipeline.",
-)
-schedule_parser.add_argument(
-    "--no-schedule",
-    dest="schedule",
-    action="store_false",
-    help="Skips attaching the schedule to the pipeline.",
-)
-args = parser.parse_args()
-trigger_after_publish = args.trigger_after_publish
-schedule = args.schedule
-
 
 # --- load configuration
 print("Loading configuration...")
@@ -74,6 +41,24 @@ workspace_name = env("WORKSPACE_NAME")
 workspace_region = env("WORKSPACE_REGION")
 gpu_cluster_name = env("GPU_BATCH_CLUSTER_NAME")
 cpu_cluster_name = env("CPU_BATCH_CLUSTER_NAME")
+schedule = env("SCHEDULE")
+trigger_after_publish = env("TRIGGER_AFTER_PUBLISH")
+sql_name = env("SQL_DB_NAME")
+sql_pw = env("SQL_DB_PW")
+
+# --- Google Service Account
+g_type = env("TYPE")
+project_id = env("PROJECT_ID")
+private_key_id = env("PRIVATE_KEY_ID")
+private_key = env("PRIVATE_KEY")
+client_email = env("CLIENT_EMAIL")
+client_id = env("CLIENT_ID")
+auth_uri = env("AUTH_URI")
+token_uri = env("TOKEN_URI")
+auth_provider_x509_cert_url = env("AUTH_PROVIDER_X509_CERT_URL")
+client_x509_cert_url = env("CLIENT_X509_CERT_URL")
+
+
 
 # --- get creds for aservice principalv
 with open('Azure_ML/service_principals/sonntagsfrage-ml-auth-file.json') as f:
@@ -137,6 +122,47 @@ run_config.environment.spark.precache_packages = False
 print("Defining pipeline steps...")
 pipeline_path = "Azure_ML/03_pipeline/"
 
+# - Crawl Data
+crawl_data_dir = PipelineData(
+    "extracted_data",
+    is_directory=True,
+)
+crawl_data_step = PythonScriptStep(
+    name="Crawl Data",
+    script_name=pipeline_path + "01_crawl_data/main.py",
+    source_directory='.',
+    compute_target=compute_target,
+    runconfig=run_config,
+    outputs=[crawl_data_dir],
+    arguments=["--output-dir", crawl_data_dir,
+               "--sql-name-in", sql_name,
+               "--sql-pw-in", sql_pw,
+               ],
+    allow_reuse=False,
+)
+
+# - Clean Crawled Data
+clean_data_dir = PipelineData(
+    "extracted_data",
+    is_directory=True,
+)
+clean_data_step = PythonScriptStep(
+    name="Clean Crawled Data",
+    script_name=pipeline_path + "02_clean_crawled_data/main.py",
+    source_directory='.',
+    compute_target=compute_target,
+    runconfig=run_config,
+    inputs=[crawl_data_dir],
+    outputs=[clean_data_dir],
+    arguments=["--input-dir", crawl_data_dir,
+               "--output-dir", clean_data_dir,
+               "--sql-name-in", sql_name,
+               "--sql-pw-in", sql_pw,
+               ],
+    allow_reuse=False,
+)
+
+
 # - Extract Data
 extracted_data_dir = PipelineData(
     "extracted_data",
@@ -144,12 +170,14 @@ extracted_data_dir = PipelineData(
 )
 extract_data_step = PythonScriptStep(
     name="Extract Data",
-    script_name=pipeline_path + "01_extract_data/main.py",
+    script_name=pipeline_path + "03_extract_data/main.py",
     source_directory='.',
     compute_target=compute_target,
     runconfig=run_config,
+    inputs=[clean_data_dir],
     outputs=[extracted_data_dir],
-    arguments=["--output-dir", extracted_data_dir],
+    arguments=["--input-dir", clean_data_dir,
+               "--output-dir", extracted_data_dir],
     allow_reuse=False,
 )
 
@@ -160,7 +188,7 @@ transformed_data_dir = PipelineData(
 )
 transform_data_step = PythonScriptStep(
     name="Transform Data",
-    script_name=pipeline_path + "02_transform_data/main.py",
+    script_name=pipeline_path + "04_transform_data/main.py",
     source_directory='.',
     compute_target=compute_target,
     runconfig=run_config,
@@ -178,7 +206,7 @@ calc_predictions_dir = PipelineData(
 )
 calc_predictions_step = PythonScriptStep(
     name="Calc Predictions",
-    script_name=pipeline_path + "03_predict_data/main.py",
+    script_name=pipeline_path + "05_predict_data/main.py",
     source_directory='.',
     compute_target=compute_target,
     runconfig=run_config,
@@ -189,17 +217,36 @@ calc_predictions_step = PythonScriptStep(
     allow_reuse=False,
 )
 
-# - Trigger Next Pipeline Steps
-trigger_pipeline_step = PythonScriptStep(
-    name="Trigger Pipeline",
-    script_name=pipeline_path + "04_trigger_pipeline/main.py",
+# - Send Data to Google spreadsheet
+send_data_dir = PipelineData(
+    "extracted_data",
+    is_directory=True,
+)
+send_data_step = PythonScriptStep(
+    name="Send Data to spreadsheet",
+    script_name=pipeline_path + "06_send_data_to_googlesheet/main.py",
     source_directory='.',
     compute_target=compute_target,
     runconfig=run_config,
     inputs=[calc_predictions_dir],
-    arguments=["--input-dir", calc_predictions_dir],
+    outputs=[send_data_dir],
+    arguments=["--input-dir", calc_predictions_dir,
+               "--output-dir", send_data_dir,
+               "--g-type", g_type,
+               "--project-id", project_id,
+               "--private-key-id", private_key_id,
+               "--private-key", private_key,
+               "--client-email", client_email,
+               "--client-id", client_id,
+               "--auth-uri", auth_uri,
+               "--token-uri", token_uri,
+               "--auth-provider-x509-cert-url", auth_provider_x509_cert_url,
+               "--client-x509-cert-url", client_x509_cert_url,
+               ],
     allow_reuse=False,
 )
+
+
 
 # # - Train Models
 
@@ -291,9 +338,12 @@ print("Assembling and publishing pipeline...")
 pipeline_name = "Sonntagsfrage-Forecaster-Pipeline"
 pipeline_description = "WiP pipeline."
 pipeline_steps = [
+    crawl_data_step,
+    clean_data_step,
     extract_data_step,
     transform_data_step,
     calc_predictions_step,
+    send_data_step,
     # trigger_pipeline_step,
     # train_models_step,
     # register_best_model_step,
@@ -325,8 +375,6 @@ except:
         description=f"Pipeline Endpoint for {pipeline_name}",
     )
 
-pipeline_endpoint.set_default(published_pipeline)
-
 # TODO: cleanup older pipeline endpoints(?)
 
 
@@ -351,11 +399,11 @@ if schedule:
 
 
 # --- trigger pipeline endpoint if we have been told to do so
-if trigger_after_publish:
+if trigger_after_publish == True:
     print(f"Triggering pipeline endpoint '{pipeline_name}' (as configured)...")
     pipeline_run = Experiment(
         workspace, pipeline_name).submit(pipeline_endpoint)
-    pipeline_run.wait_for_completion()
+    # pipeline_run.wait_for_completion()
 
 
 # --- Done
