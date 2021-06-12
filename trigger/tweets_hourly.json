@@ -1,0 +1,24 @@
+{
+	"name": "tweets_hourly",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "process_tweets",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 2,
+				"startTime": "2021-06-12T20:08:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
