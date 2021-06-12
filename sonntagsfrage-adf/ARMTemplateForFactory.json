@@ -251,6 +251,42 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/process_tweets')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "aggregate_tweets",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[sonntagsfrage].[hate_twitter_aggreagate_tweets]"
+						},
+						"linkedServiceName": {
+							"referenceName": "sonntagsfrage_sql_db",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "hate_twitter"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrage_sql_db')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/test_az_func_conn')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -353,6 +389,29 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/sonntagsfrage_sql_db')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('sonntagsfrage_sql_db_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sontagsfrage-sql-login-db-password"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/test_az_func')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -417,65 +476,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/process_tweets')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "aggregate_tweets",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[sonntagsfrage].[hate_twitter_aggreagate_tweets]"
-						},
-						"linkedServiceName": {
-							"referenceName": "sonntagsfrage_sql_db",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"folder": {
-					"name": "hate_twitter"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrage_sql_db')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/sonntagsfrage_sql_db')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('sonntagsfrage_sql_db_connectionString')]",
-					"password": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "sonntagsfrageKeys",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "sontagsfrage-sql-login-db-password"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/tweets_hourly')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -495,7 +495,7 @@
 				"typeProperties": {
 					"recurrence": {
 						"frequency": "Hour",
-						"interval": 2,
+						"interval": 1,
 						"startTime": "2021-06-12T20:08:00Z",
 						"timeZone": "UTC"
 					}
