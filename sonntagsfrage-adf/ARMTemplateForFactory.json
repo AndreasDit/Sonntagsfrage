@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "sonntagsfrage-adf"
 		},
+		"sonntagsfrage_sql_db_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'"
+		},
 		"AzureFunction01_properties_typeProperties_functionAppUrl": {
 			"type": "string",
 			"defaultValue": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
@@ -47,8 +51,8 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Sonntagsfrage-Forecaster-Pipeline",
-						"type": "AzureMLExecutePipeline",
+						"name": "Crawl_Data",
+						"type": "AzureFunctionActivity",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -59,11 +63,101 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
+							"functionName": "crawl_data_questionaire_results",
+							"method": "POST",
+							"headers": {},
+							"body": "\"test\"\""
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureFunction01",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Clean_Data",
+						"type": "AzureFunctionActivity",
+						"dependsOn": [
+							{
+								"activity": "Crawl_Data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"functionName": "clean_crawled_data",
+							"method": "POST",
+							"headers": {},
+							"body": "test"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureFunction01",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Sonntagsfrage-Forecaster-Pipeline",
+						"type": "AzureMLExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Clean_Data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
 							"experimentName": "Sonntagsfrage-Forecaster",
-							"mlPipelineEndpointId": "5927d9e5-7f2c-4f45-9740-cd8b83399739"
+							"mlPipelineEndpointId": "7f57ce0e-8e49-4e9a-9a16-b6659cc92772"
 						},
 						"linkedServiceName": {
 							"referenceName": "SonntagsfragePredictor",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send_preds_to_google_spreadsheet",
+						"type": "AzureFunctionActivity",
+						"dependsOn": [
+							{
+								"activity": "Sonntagsfrage-Forecaster-Pipeline",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"functionName": "google_spreadsheets_azure_func",
+							"method": "POST",
+							"headers": {},
+							"body": "test"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureFunction01",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -74,6 +168,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureFunction01')]",
 				"[concat(variables('factoryId'), '/linkedServices/SonntagsfragePredictor')]"
 			]
 		},
@@ -227,7 +322,7 @@
 				"typeProperties": {
 					"subscriptionId": "[parameters('SonntagsfragePredictor_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]",
-					"mlWorkspaceName": "priv-proj-sonntagsfrage-aml01",
+					"mlWorkspaceName": "Sonntagsfrage-predictor",
 					"servicePrincipalId": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]",
 					"servicePrincipalKey": {
 						"type": "AzureKeyVaultSecret",
@@ -319,6 +414,65 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/000-master-pipeline')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/process_tweets')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "aggregate_tweets",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[sonntagsfrage].[hate_twitter_aggreagate_tweets]"
+						},
+						"linkedServiceName": {
+							"referenceName": "sonntagsfrage_sql_db",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "hate_twitter"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrage_sql_db')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sonntagsfrage_sql_db')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('sonntagsfrage_sql_db_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sontagsfrage-sql-login-db-password"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
 			]
 		}
 	]

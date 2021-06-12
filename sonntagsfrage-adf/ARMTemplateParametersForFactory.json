@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "sonntagsfrage-adf"
 		},
+		"sonntagsfrage_sql_db_connectionString": {
+			"value": ""
+		},
 		"AzureFunction01_properties_typeProperties_functionAppUrl": {
 			"value": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
 		},

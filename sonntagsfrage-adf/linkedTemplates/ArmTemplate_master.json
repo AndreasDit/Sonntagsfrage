@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "sonntagsfrage-adf"
 		},
+		"sonntagsfrage_sql_db_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'"
+		},
 		"AzureFunction01_properties_typeProperties_functionAppUrl": {
 			"type": "string",
 			"defaultValue": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
@@ -61,6 +65,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"sonntagsfrage_sql_db_connectionString": {
+						"value": "[parameters('sonntagsfrage_sql_db_connectionString')]"
 					},
 					"sonntagsfrageKeys_properties_typeProperties_baseUrl": {
 						"value": "[parameters('sonntagsfrageKeys_properties_typeProperties_baseUrl')]"

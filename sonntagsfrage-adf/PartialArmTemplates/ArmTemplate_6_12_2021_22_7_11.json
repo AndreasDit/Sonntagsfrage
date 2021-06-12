@@ -6,153 +6,12 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "sonntagsfrage-adf"
-		},
-		"sonntagsfrage_sql_db_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'"
-		},
-		"sonntagsfrageKeys_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://sonntagsfrage-keys.vault.azure.net/"
-		},
-		"AzureFunction01_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
-		},
-		"SonntagsfragePredictor_properties_typeProperties_subscriptionId": {
-			"type": "string",
-			"defaultValue": "ffb77607-308f-4e35-baf6-a7ff61a55056"
-		},
-		"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
-			"type": "string",
-			"defaultValue": "priv-proj-sonntagsfrage"
-		},
-		"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "2274a57e-306c-4a6e-9fc1-79cbde3781de"
-		},
-		"SonntagsfragePredictor_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
-		},
-		"test_az_func_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://az-func-on-adf.azurewebsites.net"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/sonntagsfrageKeys')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureKeyVault",
-				"typeProperties": {
-					"baseUrl": "[parameters('sonntagsfrageKeys_properties_typeProperties_baseUrl')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction01')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction01_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "sonntagsfrageKeys",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "sonntagsfrage-ETL-pipelines-HOST-KEY-DEFAULT"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SonntagsfragePredictor')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureMLService",
-				"typeProperties": {
-					"subscriptionId": "[parameters('SonntagsfragePredictor_properties_typeProperties_subscriptionId')]",
-					"resourceGroupName": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]",
-					"mlWorkspaceName": "Sonntagsfrage-predictor",
-					"servicePrincipalId": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]",
-					"servicePrincipalKey": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "sonntagsfrageKeys",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "sp-aml-sonntagsfrage-clientSecret"
-					},
-					"tenant": "[parameters('SonntagsfragePredictor_properties_typeProperties_tenant')]"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/test_az_func')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('test_az_func_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "sonntagsfrageKeys",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "az-func-on-adf-host-key-default"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/sonntagsfrage_sql_db')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('sonntagsfrage_sql_db_connectionString')]",
-					"password": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "sonntagsfrageKeys",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "sontagsfrage-sql-login-db-password"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
-			]
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/000-master-pipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -174,7 +33,6 @@
 						"typeProperties": {
 							"functionName": "crawl_data_questionaire_results",
 							"method": "POST",
-							"headers": {},
 							"body": "\"test\"\""
 						},
 						"linkedServiceName": {
@@ -204,7 +62,6 @@
 						"typeProperties": {
 							"functionName": "clean_crawled_data",
 							"method": "POST",
-							"headers": {},
 							"body": "test"
 						},
 						"linkedServiceName": {
@@ -262,7 +119,6 @@
 						"typeProperties": {
 							"functionName": "google_spreadsheets_azure_func",
 							"method": "POST",
-							"headers": {},
 							"body": "test"
 						},
 						"linkedServiceName": {
@@ -302,7 +158,6 @@
 						"typeProperties": {
 							"functionName": "crawl_data_questionaire_results",
 							"method": "POST",
-							"headers": {},
 							"body": "\""
 						},
 						"linkedServiceName": {
@@ -341,7 +196,6 @@
 						"typeProperties": {
 							"functionName": "crawl_data_questionaire_results",
 							"method": "POST",
-							"headers": {},
 							"body": "test"
 						},
 						"linkedServiceName": {
@@ -380,7 +234,6 @@
 						"typeProperties": {
 							"functionName": "HttpTrigger",
 							"method": "POST",
-							"headers": {},
 							"body": "\""
 						},
 						"linkedServiceName": {
@@ -396,6 +249,132 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/test_az_func')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction01')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "https://sonntagsfrage-etl-pipelines.azurewebsites.net",
+					"functionKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sonntagsfrage-ETL-pipelines-HOST-KEY-DEFAULT"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SonntagsfragePredictor')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureMLService",
+				"typeProperties": {
+					"subscriptionId": "ffb77607-308f-4e35-baf6-a7ff61a55056",
+					"resourceGroupName": "priv-proj-sonntagsfrage",
+					"mlWorkspaceName": "Sonntagsfrage-predictor",
+					"servicePrincipalId": "2274a57e-306c-4a6e-9fc1-79cbde3781de",
+					"servicePrincipalKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sp-aml-sonntagsfrage-clientSecret"
+					},
+					"tenant": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sonntagsfrageKeys')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "https://sonntagsfrage-keys.vault.azure.net/"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/test_az_func')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "https://az-func-on-adf.azurewebsites.net",
+					"functionKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "az-func-on-adf-host-key-default"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Sonntagsfrage_weekly')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "000-master-pipeline",
+							"type": "PipelineReference"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Week",
+						"interval": 1,
+						"startTime": "2021-05-09T05:30:00Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								30
+							],
+							"hours": [
+								5
+							],
+							"weekDays": [
+								"Monday"
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/000-master-pipeline')]"
 			]
 		},
 		{
@@ -435,44 +414,29 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Sonntagsfrage_weekly')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
+			"name": "[concat(parameters('factoryName'), '/sonntagsfrage_sql_db')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "000-master-pipeline",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
+				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"recurrence": {
-						"frequency": "Week",
-						"interval": 1,
-						"startTime": "2021-05-09T05:30:00Z",
-						"timeZone": "UTC",
-						"schedule": {
-							"minutes": [
-								30
-							],
-							"hours": [
-								5
-							],
-							"weekDays": [
-								"Monday"
-							]
-						}
+					"connectionString": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sontagsfrage-sql-login-db-password"
 					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/000-master-pipeline')]"
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrageKeys')]"
 			]
 		}
 	]
