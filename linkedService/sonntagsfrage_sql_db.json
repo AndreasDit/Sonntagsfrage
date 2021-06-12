@@ -1,0 +1,18 @@
+{
+	"name": "sonntagsfrage_sql_db",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sonntagsfrage-server.database.windows.net;Initial Catalog=sonntagsfrage-sql-db;User ID=sonntagspredictor",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "sonntagsfrageKeys",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sontagsfrage-sql-login-db-password"
+			}
+		}
+	}
+}
