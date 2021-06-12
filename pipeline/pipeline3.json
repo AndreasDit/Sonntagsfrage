@@ -1,0 +1,31 @@
+{
+	"name": "pipeline3",
+	"properties": {
+		"activities": [
+			{
+				"name": "aggregate_tweets",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[sonntagsfrage].[hate_twitter_aggreagate_tweets]"
+				},
+				"linkedServiceName": {
+					"referenceName": "sonntagsfrage_sql_db",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "hate_twitter"
+		},
+		"annotations": []
+	}
+}
