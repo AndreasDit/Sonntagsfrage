@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"experimentName": "Sonntagsfrage-Forecaster",
-					"mlPipelineEndpointId": ""
+					"mlPipelineEndpointId": "5927d9e5-7f2c-4f45-9740-cd8b83399739"
 				},
 				"linkedServiceName": {
 					"referenceName": "SonntagsfragePredictor",
