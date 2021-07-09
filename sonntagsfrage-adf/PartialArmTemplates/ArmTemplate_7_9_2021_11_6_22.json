@@ -1,0 +1,78 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "sonntagsfrage-adf"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/000-master-pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Sonntagsfrage-Forecaster-Pipeline",
+						"type": "AzureMLExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"experimentName": "Sonntagsfrage-Forecaster",
+							"mlPipelineEndpointId": "5927d9e5-7f2c-4f45-9740-cd8b83399739"
+						},
+						"linkedServiceName": {
+							"referenceName": "SonntagsfragePredictor",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"folder": {
+					"name": "sonntagsfrage"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SonntagsfragePredictor')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SonntagsfragePredictor')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureMLService",
+				"typeProperties": {
+					"subscriptionId": "ffb77607-308f-4e35-baf6-a7ff61a55056",
+					"resourceGroupName": "priv-proj-sonntagsfrage",
+					"mlWorkspaceName": "priv-proj-sonntagsfrage-aml01",
+					"servicePrincipalId": "2274a57e-306c-4a6e-9fc1-79cbde3781de",
+					"servicePrincipalKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "sonntagsfrageKeys",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sp-aml-sonntagsfrage-clientSecret"
+					},
+					"tenant": "d5b090fb-04a6-4ddd-85cd-928023d29c36"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

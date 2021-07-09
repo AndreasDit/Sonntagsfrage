@@ -51,8 +51,8 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Crawl_Data",
-						"type": "AzureFunctionActivity",
+						"name": "Sonntagsfrage-Forecaster-Pipeline",
+						"type": "AzureMLExecutePipeline",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -63,101 +63,11 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"functionName": "crawl_data_questionaire_results",
-							"method": "POST",
-							"headers": {},
-							"body": "\"test\"\""
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction01",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Clean_Data",
-						"type": "AzureFunctionActivity",
-						"dependsOn": [
-							{
-								"activity": "Crawl_Data",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"functionName": "clean_crawled_data",
-							"method": "POST",
-							"headers": {},
-							"body": "test"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction01",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Sonntagsfrage-Forecaster-Pipeline",
-						"type": "AzureMLExecutePipeline",
-						"dependsOn": [
-							{
-								"activity": "Clean_Data",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
 							"experimentName": "Sonntagsfrage-Forecaster",
-							"mlPipelineEndpointId": "7f57ce0e-8e49-4e9a-9a16-b6659cc92772"
+							"mlPipelineEndpointId": "5927d9e5-7f2c-4f45-9740-cd8b83399739"
 						},
 						"linkedServiceName": {
 							"referenceName": "SonntagsfragePredictor",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "Send_preds_to_google_spreadsheet",
-						"type": "AzureFunctionActivity",
-						"dependsOn": [
-							{
-								"activity": "Sonntagsfrage-Forecaster-Pipeline",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"functionName": "google_spreadsheets_azure_func",
-							"method": "POST",
-							"headers": {},
-							"body": "test"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction01",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -168,7 +78,6 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureFunction01')]",
 				"[concat(variables('factoryId'), '/linkedServices/SonntagsfragePredictor')]"
 			]
 		},
@@ -341,7 +250,8 @@
 							"type": "LinkedServiceReference"
 						},
 						"secretName": "sonntagsfrage-ETL-pipelines-HOST-KEY-DEFAULT"
-					}
+					},
+					"authentication": "Anonymous"
 				}
 			},
 			"dependsOn": [
@@ -358,7 +268,7 @@
 				"typeProperties": {
 					"subscriptionId": "[parameters('SonntagsfragePredictor_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]",
-					"mlWorkspaceName": "Sonntagsfrage-predictor",
+					"mlWorkspaceName": "priv-proj-sonntagsfrage-aml01",
 					"servicePrincipalId": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]",
 					"servicePrincipalKey": {
 						"type": "AzureKeyVaultSecret",
@@ -427,7 +337,8 @@
 							"type": "LinkedServiceReference"
 						},
 						"secretName": "az-func-on-adf-host-key-default"
-					}
+					},
+					"authentication": "Anonymous"
 				}
 			},
 			"dependsOn": [
