@@ -6,7 +6,7 @@
 		"typeProperties": {
 			"subscriptionId": "ffb77607-308f-4e35-baf6-a7ff61a55056",
 			"resourceGroupName": "priv-proj-sonntagsfrage",
-			"mlWorkspaceName": "Sonntagsfrage-predictor",
+			"mlWorkspaceName": "priv-proj-sonntagsfrage-aml01",
 			"servicePrincipalId": "2274a57e-306c-4a6e-9fc1-79cbde3781de",
 			"servicePrincipalKey": {
 				"type": "AzureKeyVaultSecret",
