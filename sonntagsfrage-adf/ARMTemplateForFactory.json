@@ -9,7 +9,8 @@
 		},
 		"sonntagsfrage_sql_db_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'"
+			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sonntagsfrage-server.database.windows.net;Initial Catalog=sonntagsfrage-sql-db;User ID=sonntagspredictor"
 		},
 		"AzureFunction01_properties_typeProperties_functionAppUrl": {
 			"type": "string",
@@ -22,6 +23,10 @@
 		"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
 			"type": "string",
 			"defaultValue": "priv-proj-sonntagsfrage"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_mlWorkspaceName": {
+			"type": "string",
+			"defaultValue": "priv-proj-sonntagsfrage-aml01"
 		},
 		"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
@@ -72,6 +77,10 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"folder": {
 					"name": "sonntagsfrage"
 				},
@@ -111,6 +120,10 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"folder": {
 					"name": "sonntagsfrage"
 				},
@@ -150,6 +163,10 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"folder": {
 					"name": "sonntagsfrage"
 				},
@@ -157,6 +174,46 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureFunction01')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/process_altcoin_data')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "aggregate_balance_altcoins",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[coinbase].[aggregate_balance_altcoins]"
+						},
+						"linkedServiceName": {
+							"referenceName": "sonntagsfrage_sql_db",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "coinbase"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/sonntagsfrage_sql_db')]"
 			]
 		},
 		{
@@ -186,6 +243,10 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"folder": {
 					"name": "hate_twitter"
 				},
@@ -225,6 +286,10 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"folder": {
 					"name": "sonntagsfrage"
 				},
@@ -268,7 +333,7 @@
 				"typeProperties": {
 					"subscriptionId": "[parameters('SonntagsfragePredictor_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]",
-					"mlWorkspaceName": "priv-proj-sonntagsfrage-aml01",
+					"mlWorkspaceName": "[parameters('SonntagsfragePredictor_properties_typeProperties_mlWorkspaceName')]",
 					"servicePrincipalId": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]",
 					"servicePrincipalKey": {
 						"type": "AzureKeyVaultSecret",
@@ -384,6 +449,44 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/000-master-pipeline')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/coinbase_daily')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "process_altcoin_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2023-01-06T23:22:00Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								3
+							],
+							"hours": [
+								2
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/process_altcoin_data')]"
 			]
 		},
 		{

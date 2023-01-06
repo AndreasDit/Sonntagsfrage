@@ -9,7 +9,8 @@
 		},
 		"sonntagsfrage_sql_db_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'"
+			"metadata": "Secure string for 'connectionString' of 'sonntagsfrage_sql_db'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sonntagsfrage-server.database.windows.net;Initial Catalog=sonntagsfrage-sql-db;User ID=sonntagspredictor"
 		},
 		"AzureFunction01_properties_typeProperties_functionAppUrl": {
 			"type": "string",
@@ -22,6 +23,10 @@
 		"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
 			"type": "string",
 			"defaultValue": "priv-proj-sonntagsfrage"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_mlWorkspaceName": {
+			"type": "string",
+			"defaultValue": "priv-proj-sonntagsfrage-aml01"
 		},
 		"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
@@ -80,6 +85,9 @@
 					},
 					"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
 						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_resourceGroupName')]"
+					},
+					"SonntagsfragePredictor_properties_typeProperties_mlWorkspaceName": {
+						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_mlWorkspaceName')]"
 					},
 					"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
 						"value": "[parameters('SonntagsfragePredictor_properties_typeProperties_servicePrincipalId')]"

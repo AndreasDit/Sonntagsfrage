@@ -6,7 +6,7 @@
 			"value": "sonntagsfrage-adf"
 		},
 		"sonntagsfrage_sql_db_connectionString": {
-			"value": ""
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sonntagsfrage-server.database.windows.net;Initial Catalog=sonntagsfrage-sql-db;User ID=sonntagspredictor"
 		},
 		"AzureFunction01_properties_typeProperties_functionAppUrl": {
 			"value": "https://sonntagsfrage-etl-pipelines.azurewebsites.net"
@@ -16,6 +16,9 @@
 		},
 		"SonntagsfragePredictor_properties_typeProperties_resourceGroupName": {
 			"value": "priv-proj-sonntagsfrage"
+		},
+		"SonntagsfragePredictor_properties_typeProperties_mlWorkspaceName": {
+			"value": "priv-proj-sonntagsfrage-aml01"
 		},
 		"SonntagsfragePredictor_properties_typeProperties_servicePrincipalId": {
 			"value": "2274a57e-306c-4a6e-9fc1-79cbde3781de"
