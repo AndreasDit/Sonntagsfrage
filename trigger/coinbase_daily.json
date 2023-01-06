@@ -1,0 +1,32 @@
+{
+	"name": "coinbase_daily",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "process_altcoin_data",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-01-06T23:22:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						3
+					],
+					"hours": [
+						2
+					]
+				}
+			}
+		}
+	}
+}
