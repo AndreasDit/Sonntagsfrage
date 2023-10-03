@@ -2,7 +2,7 @@
 	"name": "Sonntagsfrage_weekly",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
